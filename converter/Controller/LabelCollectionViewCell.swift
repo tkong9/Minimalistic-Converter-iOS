@@ -10,9 +10,11 @@ import UIKit
 
 class LabelCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var symbolImage: UIImageView!
+    @IBOutlet weak var unitTitle: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 }
