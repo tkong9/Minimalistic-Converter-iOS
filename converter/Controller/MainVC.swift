@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-
     var cellIdentifier = "LabelCollectionViewCell"
     var units: [Unit] = [
         Unit(unitName: "Angle"),
@@ -67,7 +66,8 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: extention of UICollectionViewDelegate, UICollectionViewDataSource
+extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return units.count
     }

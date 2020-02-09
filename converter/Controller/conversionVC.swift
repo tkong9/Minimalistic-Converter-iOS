@@ -15,7 +15,7 @@ class conversionVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBOutlet weak var userInput: UITextField!
     @IBOutlet weak var output: UILabel!
 
-    var fromRow:Int = 0
+    var fromRow: Int = 0
     var from: String?
     var toRow = 0
     var to: String?
@@ -25,16 +25,16 @@ class conversionVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         navigationController?.navigationBar.isHidden = false
         conversionPicker.delegate = self
         conversionPicker.dataSource = self
-        from = K.c
-        to = K.c
+        from = unit.unitPicker[0][0]
+        to = unit.unitPicker[0][0]
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return unit.unitPicker[0].count
+        return unit.unitPicker[0].count // This should always be 2.
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return unit.unitPicker.count
+        return unit.unitPicker.count // number of units
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -51,7 +51,13 @@ class conversionVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             if validUserInput == "" {
                 return
             }
-            output.text = unit.convert(unit: unit!, userInput: validUserInput, from: from!, to: to!)
+            if from! == to! {
+                output.text =  validUserInput
+                return
+            }
+            let result = unit.convert(unit: unit!, userInput: validUserInput, from: from!, to: to!)
+            print(result)
+            output.text = String(result)
         }
     }
     
@@ -69,7 +75,13 @@ class conversionVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             if validUserInput.last! == "." {
                 return
             }
-            output.text = unit.convert(unit: unit!, userInput: validUserInput, from: from!, to: to!)
+            if from! == to! {
+                output.text = validUserInput
+                return
+            }
+            let result = unit.convert(unit: unit!, userInput: validUserInput, from: from!, to: to!)
+            print(result)
+            output.text = String(result)
         }
     }
 }

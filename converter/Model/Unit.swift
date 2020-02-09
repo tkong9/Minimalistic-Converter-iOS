@@ -61,103 +61,108 @@ struct Unit {
                     ["Acre", "Acre"]
             ]
         case "Temperature":
-            return [["Celcius", "Celcius"],
-                    ["Fahrenheight", "Fahrenheight"],
-                    ["Kelvin", "Kelvin"]
+            return [[K.celsius, K.celsius],
+                    [K.fahrenheit, K.fahrenheit],
+                    [K.kelvin, K.kelvin]
             ]
         case "Length":
-            return [["Meter", "Meter"],
-                    ["Kilometer", "Kilometer"],
-                    ["Centimeter", "Centimeter"],
-                    ["Millimeter", "Millimeter"],
-                    ["Micrometer", "Micrometer"],
-                    ["Nanometer", "Nanometer"],
-                    ["Mile", "Mile"],
-                    ["Yard", "Yard"],
-                    ["Foot", "Foot"],
-                    ["Inch", "Inch"],
-                    ["Light Year", "Light Year"]
+            return [[K.meter, K.meter],
+                    [K.kilometer, K.kilometer],
+                    [K.centimeter, K.centimeter],
+                    [K.millimeter, K.millimeter],
+                    [K.micrometer, K.micrometer],
+                    [K.nanometer, K.nanometer],
+                    [K.mile, K.mile],
+                    [K.yard, K.yard],
+                    [K.foot, K.foot],
+                    [K.inch, K.inch],
+                    [K.lightYear, K.lightYear]
             ]
         case "Volume":
             return [[]]
-        
         default:
             return [["Unit picker"]]
         }
     }
     
     // MARK: - Temperature
-    func CtoK(c: String) -> String {
+    func CtoK(c: String) -> Double {
         let result = NSExpression(format: "\(c) + 273.15").toFloatingPoint().expressionValue(with: nil, context: nil)!
-        print("\(result)")
-        return "\(result)"
+        return result as! Double
     }
-    func CtoF(c: String) -> String {
-        let result = String(Double(c)! * 1.8 + 32)
-        print(result)
+    func CtoF(c: String) -> Double {
+        let result = Double(c)! * 1.8 + 32
         return result
     }
-    func CtoC(c: String) -> String {
-        let result = String(Double(c)!)
-        print(result)
-        return result
+    func FtoC(f: String) -> Double {
+        return (Double(f)! - 32) * (Double(5) / 9)
     }
-    func FtoF(f: String) -> String {
-        return f
+    func FtoK(f: String) -> Double {
+        return (Double(f)! - 32) * (Double(5) / 9) + 273.15
     }
-    func FtoC(f: String) -> String {
-        return String((Double(f)! - 32) * (Double(5) / 9))
+    func KtoC(k: String) -> Double {
+        return Double(k)! - 273.15
     }
-    func FtoK(f: String) -> String {
-        return String((Double(f)! - 32) * (Double(5) / 9) + 273.15)
+    func KtoF(k: String) -> Double {
+        return (Double(k)! - 273.15) * (Double(9) / 5) + 32.0
     }
-    func KtoK(k: String) -> String {
-        return k
+    
+    // MARK: Length
+    func meterToKilometer(meter: String) -> Double {
+        return Double(meter)! / 1000
     }
-    func KtoC(k: String) -> String {
-        return String(Double(k)! - 273.15)
-    }
-    func KtoF(k: String) -> String {
-        return String((Double(k)! - 273.15) * (Double(9) / 5) + 32.0)
+    func meterToCentimeter(meter: String) -> Double {
+        return Double(meter)! * 100
     }
     
     // MARK: - Convert
-    func convert(unit: Unit, userInput: String, from: String, to: String) -> String {
+    func convert(unit: Unit, userInput: String, from: String, to: String) -> Double {
         print("unitName: \(unit.unitName), input: \(userInput), from: \(from), to: \(to)")
         switch unit.unitName {
         case "Temperature":
-            if from == K.c && to == K.c {
-                return CtoC(c: userInput)
-            } else if from == K.c && to == K.f {
+            if from == K.celsius && to == K.fahrenheit {
                 return CtoF(c: userInput)
-            } else if from == K.c && to == K.k {
+            } else if from == K.celsius && to == K.kelvin {
                 return CtoK(c: userInput)
-            } else if from == K.f && to == K.f {
-                return FtoF(f: userInput)
-            } else if from == K.f && to == K.c {
+            } else if from == K.fahrenheit && to == K.celsius {
                 return FtoC(f: userInput)
-            } else if from == K.f && to == K.k {
+            } else if from == K.fahrenheit && to == K.kelvin {
                 return FtoK(f: userInput)
-            } else if from == K.k && to == K.k {
-                return KtoK(k: userInput)
-            } else if from == K.k && to == K.c {
+            } else if from == K.kelvin && to == K.celsius {
                 return KtoC(k: userInput)
-            } else if from == K.k && to == K.f {
+            } else if from == K.kelvin && to == K.fahrenheit {
                 return KtoF(k: userInput)
             }
         default:
-            return "Error"
+            print("Error occured in Model unit convert function")
+            return -1
         }
-        return "Error"
+        print("Error occured in Model unit convert function")
+        return -1
     }
 }
 
+// MARK: Constant Struct
 struct K {
-    static let c = "Celcius"
-    static let k = "Kelvin"
-    static let f = "Fahrenheight"
+    // Temperature
+    static let celsius = "Celcius"
+    static let kelvin = "Kelvin"
+    static let fahrenheit = "Fahrenheight"
+    // Length
+    static let meter = "Meter"
+    static let kilometer = "Kilometer"
+    static let centimeter = "Centimeter"
+    static let millimeter = "Millimeter"
+    static let micrometer = "Micrometer"
+    static let nanometer = "Nanometer"
+    static let mile = "Mile"
+    static let yard = "Yard"
+    static let foot = "Foot"
+    static let inch = "Inch"
+    static let lightYear = "Light Year"
 }
 
+// MARK: Extension for handling decimal points when using NSExpression.
 extension NSExpression {
     
     func toFloatingPoint() -> NSExpression {
