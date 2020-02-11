@@ -47,6 +47,14 @@ struct Unit {
     // MARK: - Unit Picker
     var unitPicker: [[String]] {
         switch unitName {
+        case "Angle":
+            return [[K.degree, K.degree],
+                    [K.gradian, K.gradian],
+                    [K.milliradian, K.milliradian],
+                    [K.minuteOfArc, K.minuteOfArc],
+                    [K.radian, K.radian],
+                    [K.secondOfArc, K.secondOfArc]
+            ]
         case "Area":
             return [[K.squareMeter, K.squareMeter],
                     [K.squareKilometer, K.squareKilometer],
@@ -80,7 +88,30 @@ struct Unit {
                     [K.lightYear, K.lightYear]
             ]
         case "Volume":
-            return [[]]
+            return [[K.cubicMeter, K.cubicMeter],
+                    [K.cubicKilometer, K.cubicKilometer],
+                    [K.cubicCentimeter, K.cubicCentimeter],
+                    [K.cubicMillimeter, K.cubicMillimeter],
+                    [K.liter, K.liter],
+                    [K.milliliter,  K.milliliter],
+                    [K.usGallon, K.usGallon],
+                    [K.usQuart, K.usQuart],
+                    [K.usPint, K.usPint],
+                    [K.usCup, K.usCup],
+                    [K.usFluidOnce,K.usFluidOnce],
+                    [K.usTableSpoon, K.usTableSpoon],
+                    [K.usTeaSpoon, K.usTeaSpoon],
+                    [K.imperialGallon, K.imperialGallon],
+                    [K.imperialQuart, K.imperialQuart],
+                    [K.imperialPint, K.imperialPint],
+                    [K.imperialFluidOnce, K.imperialFluidOnce],
+                    [K.imperialTableSpoon, K.imperialTableSpoon],
+                    [K.imperialTeaSpoon, K.imperialTeaSpoon],
+                    [K.cubicMile, K.cubicMile],
+                    [K.cubicYard, K.cubicYard],
+                    [K.cubicFoot, K.cubicFoot],
+                    [K.cubicInch, K.cubicInch]
+            ]
         default:
             return [["Unit picker"]]
         }
@@ -623,6 +654,38 @@ struct Unit {
             } else if from == K.pyeong && to == K.acre {
                 return pyeongToAcre(pyeong: userInput)
             }
+        case "Angle":
+            if from == K.degree && to == K.gradian {
+                return degreeToGradian(degree: userInput)
+            } else if from == K.degree && to == K.milliradian {
+                return degreeToMilliradian(degree: userInput)
+            } else if from == K.degree && to == K.minuteOfArc {
+                return degreeToMinuteofArc(degree: userInput)
+            } else if from == K.degree && to == K.radian {
+                return degreeToRadian(degree: userInput)
+            } else if from == K.degree && to == K.secondOfArc {
+                return degreeToSecondofArc(degree: userInput)
+            } else if from == K.gradian && to == K.degree {
+                return gradianToDegree(gradian: userInput)
+            } else if from == K.gradian && to == K.milliradian {
+                return gradianToMilliradian(gradian: userInput)
+            } else if from == K.gradian && to == K.minuteOfArc {
+                return gradianToMinuteofArc(gradian: userInput)
+            } else if from == K.gradian && to == K.radian {
+                return gradianToRadian(gradian: userInput)
+            } else if from == K.gradian && to == K.secondOfArc {
+                return gradianToSecondofArc(gradian: userInput)
+            } else if from == K.milliradian && to == K.degree {
+                return milliradianToDegree(milliradian: userInput)
+            } else if from == K.milliradian && to == K.gradian {
+                return milliradianToGradian(milliradian: userInput)
+            } else if from == K.milliradian && to == K.minuteOfArc {
+                return milliradianToMinuteofArc(milliradian: userInput)
+            } else if from == K.milliradian && to == K.radian {
+                return milliradianToRadian(milliradian: userInput)
+            } else if from == K.milliradian && to == K.secondOfArc {
+                return milliradianToSecondofArc(milliradian: userInput)
+            }
             
         default:
             print("Error occured in Model unit convert function")
@@ -664,6 +727,37 @@ struct K {
     static let squareInch = "Square Inch"
     static let acre = "Acre"
     static let pyeong = "Pyeong"
+    // Angle
+    static let degree = "Degree"
+    static let gradian = "Gradian"
+    static let milliradian = "Milliradian"
+    static let minuteOfArc = "Minute of arc"
+    static let radian = "Radian"
+    static let secondOfArc = "Second of arc"
+    // Volume
+    static let cubicMeter = "Cubic Meter"
+    static let cubicKilometer = "Cubic Kilometer"
+    static let cubicCentimeter = "Cubic Centimeter"
+    static let cubicMillimeter = "Cubic Millimeter"
+    static let liter = "Liter"
+    static let milliliter = "Milliliter"
+    static let usGallon = "US Gallon"
+    static let usQuart = "US Quart"
+    static let usPint = "US Pint"
+    static let usCup = "US Cup"
+    static let usFluidOnce = "US Fluid Once"
+    static let usTableSpoon = "US Table Spoon"
+    static let usTeaSpoon = "US Tea Spoon"
+    static let imperialGallon = "Imperial Gallon"
+    static let imperialQuart = "Imperial Quart"
+    static let imperialPint = "Imperial Pint"
+    static let imperialFluidOnce = "Imperial Fluid Once"
+    static let imperialTableSpoon = "Imperial Table Spoon"
+    static let imperialTeaSpoon = "Imperial Tea Spoon"
+    static let cubicMile = "Cubic Mile"
+    static let cubicYard = "Cubic Yard"
+    static let cubicFoot = "Cubic Foot"
+    static let cubicInch = "Cubic Inch"
 }
 
 // MARK: - All the conversion functions are here!
@@ -706,7 +800,7 @@ extension Unit {
         return Double(squareMeter)! * 1e12
     }
     func squareMeterToHectare(squareMeter: String) -> Double {
-        return Double(squareMeter)! * (1 / 10000)
+        return Double(squareMeter)! * (1.0 / 10000)
     }
     func squareMeterToSquareMile(squareMeter: String) -> Double {
         return Double(squareMeter)! * (3.86102e-7)
@@ -979,7 +1073,7 @@ extension Unit {
         return Double(squareFoot)! * 3.58701e-8
     }
     func squareFootToSquareYard(squareFoot: String) -> Double {
-        return Double(squareFoot)! * (1 / 9)
+        return Double(squareFoot)! * (1 / 9.0)
     }
     func squareFootToSquareInch(squareFoot: String) -> Double {
         return Double(squareFoot)! * 144
@@ -1347,7 +1441,7 @@ extension Unit {
         return Double(foot)! * 0.000189394
     }
     func footToYard(foot: String) -> Double {
-        return Double(foot)! * (1 / 3)
+        return Double(foot)! * (1 / 3.0)
     }
     func footToInch(foot: String) -> Double {
         return Double(foot)! * 12
@@ -1377,10 +1471,10 @@ extension Unit {
         return Double(inch)! * 1.57828e-5
     }
     func inchToYard(inch: String) -> Double {
-        return Double(inch)! * (1 / 36)
+        return Double(inch)! * (1 / 36.0)
     }
     func inchToFoot(inch: String) -> Double {
-        return Double(inch)! * (1 / 12)
+        return Double(inch)! * (1 / 12.0)
     }
     func inchToLightyear(inch: String) -> Double {
         return Double(inch)! * 2.68478e-18
@@ -1414,6 +1508,97 @@ extension Unit {
     }
     func lightyearToInch(lightyear: String) -> Double {
         return Double(lightyear)! * 3.725e17
+    }
+    // MARK: - Angle
+    func degreeToGradian(degree: String) -> Double {
+        return Double(degree)! * (200 / 180.0)
+    }
+    func degreeToMilliradian(degree: String) -> Double {
+        return Double(degree)! * 1000 * Double.pi / 180.0
+    }
+    func degreeToMinuteofArc(degree: String) -> Double {
+        return Double(degree)! * 60
+    }
+    func degreeToRadian(degree: String) -> Double {
+        return Double(degree)! * Double.pi / 180.0
+    }
+    func degreeToSecondofArc(degree: String) -> Double {
+        return Double(degree)! * 3600.0
+    }
+    func gradianToDegree(gradian: String) -> Double {
+        return Double(gradian)! * 180 / 200.0
+    }
+    func gradianToMilliradian(gradian: String) -> Double {
+        return Double(gradian)! * 1000 * Double.pi  / 200
+    }
+    func gradianToMinuteofArc(gradian: String) -> Double {
+        return Double(gradian)! * 54
+    }
+    func gradianToRadian(gradian: String) -> Double {
+        return Double(gradian)! * Double.pi / 200
+    }
+    func gradianToSecondofArc(gradian: String) -> Double {
+        return Double(gradian)! * 3240
+    }
+    func milliradianToDegree(milliradian: String) -> Double {
+        return Double(milliradian)! * 180 / 1000 * (1 / Double.pi)
+    }
+    func milliradianToGradian(milliradian: String) -> Double {
+        return Double(milliradian)! * 200 / 1000 * (1 / Double.pi)
+    }
+    func milliradianToMinuteofArc(milliradian: String) -> Double {
+        return Double(milliradian)! * 60 * 180 / 1000 * (1 / Double.pi)
+    }
+    func milliradianToRadian(milliradian: String) -> Double {
+        return Double(milliradian)! * 0.001
+    }
+    func milliradianToSecondofArc(milliradian: String) -> Double {
+        return Double(milliradian)! * 3600 * 180 / 1000 * (1 / Double.pi)
+    }
+    func minuteofArcToDegree(minuteofArc: String) -> Double {
+        return Double(minuteofArc)! / 60
+    }
+    func minuteofArcToGradian(minuteofArc: String) -> Double {
+        return Double(minuteofArc)! / 54
+    }
+    func minuteofArcToMilliradian(minuteofArc: String) -> Double {
+        return Double(minuteofArc)! * 1000 * Double.pi * (1.0 / (60 * 180))
+    }
+    func minuteofArcToRadian(minuteofArc: String) -> Double {
+        return Double(minuteofArc)! * Double.pi * (1.0 / (60 * 180))
+    }
+    func minuteofArcToSecondofArc(minuteofArc: String) -> Double {
+        return Double(minuteofArc)! * 60
+    }
+    func radianToDegree(radian: String) -> Double {
+        return Double(radian)! * 180 * (1 / Double.pi)
+    }
+    func radianToGradian(radian: String) -> Double {
+        return Double(radian)! * 200 / Double.pi
+    }
+    func radianToMilliradian(radian: String) -> Double {
+        return Double(radian)! * 1000
+    }
+    func radianToMinuteofArc(radian: String) -> Double {
+        return Double(radian)! * 60 * 180 / Double.pi
+    }
+    func radianToSecondofArc(radian: String) -> Double {
+        return Double(radian)! * 3600 * 180 / Double.pi
+    }
+    func secondofArcToDegree(secondofArc: String) -> Double {
+        return Double(secondofArc)! / 3600
+    }
+    func secondofArcToGradian(secondofArc: String) -> Double {
+        return Double(secondofArc)! / 3240
+    }
+    func secondofArcToMilliradian(secondofArc: String) -> Double {
+        return Double(secondofArc)! * 1000 * Double.pi * (1.0 / (180 * 3600))
+    }
+    func secondofArcToMinuteofArc(secondofArc: String) -> Double {
+        return Double(secondofArc)! / 60
+    }
+    func secondofArcToRadian(secondofArc: String) -> Double {
+        return Double(secondofArc)! * Double.pi * (1.0 / (180 * 3600))
     }
 }
 
