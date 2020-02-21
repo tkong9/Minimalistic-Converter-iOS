@@ -133,6 +133,13 @@ struct Unit {
                     [K.kilometerPerHour, K.kilometerPerHour],
                     [K.knot, K.knot]
             ]
+        case "Pressure":
+            return [[K.atmosphere, K.atmosphere],
+                    [K.bar, K.bar],
+                    [K.pascal, K.pascal],
+                    [K.poundForcePerSquareInch, K.poundForcePerSquareInch],
+                    [K.torr, K.torr]
+            ]
         default:
             return [["Unit picker"]]
         }
@@ -2009,7 +2016,49 @@ struct Unit {
             } else if from == K.knot && to == K.kilometerPerHour {
                 return knotToKilometerPerHour(knot: userInput)
             }
-            
+            // MARK: - Pressure
+        case "Pressure":
+            if from == K.atmosphere && to == K.bar {
+                return atmosphereToBar(atmosphere: userInput)
+            } else if from == K.atmosphere && to == K.pascal {
+                return atmosphereToPascal(atmosphere: userInput)
+            } else if from == K.atmosphere && to == K.poundForcePerSquareInch {
+                return atmosphereToPsi(atmosphere: userInput)
+            } else if from == K.atmosphere && to == K.torr {
+                return atmosphereToTorr(atmosphere: userInput)
+            } else if from == K.bar && to == K.atmosphere {
+                return barToAtmosphere(bar: userInput)
+            } else if from == K.bar && to == K.pascal {
+                return barToPascal(bar: userInput)
+            } else if from == K.bar && to == K.poundForcePerSquareInch {
+                return barToPsi(bar: userInput)
+            } else if from == K.bar && to == K.torr {
+                return barToTorr(bar: userInput)
+            } else if from == K.pascal && to == K.atmosphere {
+                return pascalToAtmosphere(pascal: userInput)
+            } else if from == K.pascal && to == K.bar {
+                return pascalToBar(pascal: userInput)
+            } else if from == K.pascal && to == K.poundForcePerSquareInch {
+                return pascalToPsi(pascal: userInput)
+            } else if from == K.pascal && to == K.torr {
+                return pascalToTorr(pascal: userInput)
+            } else if from == K.poundForcePerSquareInch && to == K.atmosphere {
+                return psiToAtmosphere(psi: userInput)
+            } else if from == K.poundForcePerSquareInch && to == K.bar {
+                return psiToBar(psi: userInput)
+            } else if from == K.poundForcePerSquareInch && to == K.pascal {
+                return psiToPascal(psi: userInput)
+            } else if from == K.poundForcePerSquareInch && to == K.torr {
+                return psiToTorr(psi: userInput)
+            } else if from == K.torr && to == K.atmosphere {
+                return torrToAtmosphere(torr: userInput)
+            } else if from == K.torr && to == K.bar {
+                return torrToBar(torr: userInput)
+            } else if from == K.torr && to == K.pascal {
+                return torrToPascal(torr: userInput)
+            } else if from == K.torr && to == K.poundForcePerSquareInch {
+                return torrToPsi(torr: userInput)
+            }
             
         default:
             print("Error occured in Model unit convert function")
@@ -2101,6 +2150,12 @@ struct K {
     static let meterPerSecond = "Meter per second"
     static let kilometerPerHour = "Kilometer per hour"
     static let knot = "Knot"
+    // Pressure
+    static let atmosphere = "Atmosphere"
+    static let bar = "Bar"
+    static let pascal = "Pascal"
+    static let poundForcePerSquareInch = "psi"
+    static let torr = "torr"
 }
 
 // MARK: - All the conversion functions are here!
@@ -4918,6 +4973,66 @@ extension Unit {
     }
     func knotToKilometerPerHour(knot: String) -> Double {
         return Double(knot)! * 1.852
+    }
+    func atmosphereToBar(atmosphere: String) -> Double {
+        return Double(atmosphere)! * 1.01325
+    }
+    func atmosphereToPascal(atmosphere: String) -> Double {
+        return Double(atmosphere)! * 101325
+    }
+    func atmosphereToPsi(atmosphere: String) -> Double {
+        return Double(atmosphere)! * 14.6959
+    }
+    func atmosphereToTorr(atmosphere: String) -> Double {
+        return Double(atmosphere)! * 760
+    }
+    func barToAtmosphere(bar: String) -> Double {
+        return Double(bar)! * 0.986923
+    }
+    func barToPascal(bar: String) -> Double {
+        return Double(bar)! * 100000
+    }
+    func barToPsi(bar: String) -> Double {
+        return Double(bar)! * 14.5038
+    }
+    func barToTorr(bar: String) -> Double {
+        return Double(bar)! * 750.062
+    }
+    func pascalToAtmosphere(pascal: String) -> Double {
+        return Double(pascal)! / 101325
+    }
+    func pascalToBar(pascal: String) -> Double {
+        return Double(pascal)! * 1e-5
+    }
+    func pascalToPsi(pascal: String) -> Double {
+        return Double(pascal)! * 0.000145038
+    }
+    func pascalToTorr(pascal: String) -> Double {
+        return Double(pascal)! * 0.00750062
+    }
+    func psiToAtmosphere(psi: String) -> Double {
+        return Double(psi)! * 14.696
+    }
+    func psiToBar(psi: String) -> Double {
+        return Double(psi)! * 0.0689476
+    }
+    func psiToPascal(psi: String) -> Double {
+        return Double(psi)! * 6894.76
+    }
+    func psiToTorr(psi: String) -> Double {
+        return Double(psi)! * 51.7149
+    }
+    func torrToAtmosphere(torr: String) -> Double {
+        return Double(torr)! / 760.0
+    }
+    func torrToBar(torr: String) -> Double {
+        return Double(torr)! * 0.00133322
+    }
+    func torrToPascal(torr: String) -> Double {
+        return Double(torr)! * 133.322
+    }
+    func torrToPsi(torr: String) -> Double {
+        return Double(torr)! / 51.715
     }
 }
 
