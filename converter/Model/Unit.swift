@@ -153,7 +153,16 @@ struct Unit {
                     [K.ounce, K.ounce]
             ]
         case "Energy":
-            return [[]
+            return [[K.joule, K.joule],
+                    [K.kJoule, K.kJoule],
+                    [K.gramCalorie, K.gramCalorie],
+                    [K.kCalorie, K.kCalorie],
+                    [K.wattHour, K.wattHour],
+                    [K.kilowattHour, K.kilowattHour],
+                    [K.electronvolt, K.electronvolt],
+                    [K.britishThermal, K.britishThermal],
+                    [K.usTherm, K.usTherm],
+                    [K.footPound, K.footPound]
             ]
         default:
             return [["Unit picker"]]
@@ -2255,6 +2264,170 @@ struct Unit {
             } else if from == K.ounce && to == K.pound {
                 return ounceToPound(ounce: userInput)
             }
+        case "Energy":
+            if from == K.joule && to == K.kJoule {
+                return jouleToKjoule(joule: userInput)
+            } else if from == K.joule && to == K.gramCalorie {
+                return jouleToGramCalorie(joule: userInput)
+            } else if from == K.joule && to == K.kCalorie {
+                return jouleToKCalorie(joule: userInput)
+            } else if from == K.joule && to == K.wattHour {
+                return jouleToWattHour(joule: userInput)
+            } else if from == K.joule && to == K.kilowattHour {
+                return jouleToKilowattHour(joule: userInput)
+            } else if from == K.joule && to == K.electronvolt {
+                return jouleToElectronvolt(joule: userInput)
+            } else if from == K.joule && to == K.britishThermal {
+                return jouleToBritishThermal(joule: userInput)
+            } else if from == K.joule && to == K.usTherm {
+                return jouleToUsTherm(joule: userInput)
+            } else if from == K.joule && to == K.footPound {
+                return jouleToFootPound(joule: userInput)
+            } else if from == K.kJoule && to == K.joule {
+                return kJouleToJoule(kJoule: userInput)
+            } else if from == K.kJoule && to == K.gramCalorie {
+                return kJouleToGramCalorie(kJoule: userInput)
+            } else if from == K.kJoule && to == K.kCalorie {
+                return kJouleToKCalorie(kJoule: userInput)
+            } else if from == K.kJoule && to == K.wattHour {
+                return kJouleToWattHour(kJoule: userInput)
+            } else if from == K.kJoule && to == K.kilowattHour {
+                return kJouleToKilowattHour(kJoule: userInput)
+            } else if from == K.kJoule && to == K.electronvolt {
+                return kJouleToElectronvolt(kJoule: userInput)
+            } else if from == K.kJoule && to == K.britishThermal {
+                return kJouleToBritishThermal(kJoule: userInput)
+            } else if from == K.kJoule && to == K.usTherm {
+                return kJouleToUSTherm(kJoule: userInput)
+            } else if from == K.kJoule && to == K.footPound {
+                return kJouleToFootPound(kJoule: userInput)
+            } else if from == K.gramCalorie && to == K.joule {
+                return gramCalorieToJoule(gramCalorie: userInput)
+            } else if from == K.gramCalorie && to == K.kJoule {
+                return gramCalorieToKjoule(gramCalorie: userInput)
+            } else if from == K.gramCalorie && to == K.kCalorie {
+                return gramCalorieToKcalorie(gramCalorie: userInput)
+            } else if from == K.gramCalorie && to == K.wattHour {
+                return gramCalorieToWattHour(gramCalorie: userInput)
+            } else if from == K.gramCalorie && to == K.kilowattHour {
+                return gramCalorieToKWattHour(gramCalorie: userInput)
+            } else if from == K.gramCalorie && to == K.electronvolt {
+                return gramCalorieToElectronvold(gramCalorie: userInput)
+            } else if from == K.gramCalorie && to == K.britishThermal {
+                return gramCalorieToBritishTherm(gramCalorie: userInput)
+            } else if from == K.gramCalorie && to == K.usTherm {
+                return gramCalorieToUSTherm(gramCalorie: userInput)
+            } else if from == K.gramCalorie && to == K.footPound {
+                return gramCalorieToFootPound(gramCalorie: userInput)
+            } else if from == K.kCalorie && to == K.joule {
+                return kCalorieToJoule(kCalorie: userInput)
+            } else if from == K.kCalorie && to == K.kJoule {
+                return kCalorieToKJoule(kCalorie: userInput)
+            } else if from == K.kCalorie && to == K.gramCalorie {
+                return kCalorieToGramCalorie(kCalorie: userInput)
+            } else if from == K.kCalorie && to == K.wattHour {
+                return kCalorieToWattHour(kCalorie: userInput)
+            } else if from == K.kCalorie && to == K.kilowattHour {
+                return kCalorieToKilowattHour(kCalorie: userInput)
+            } else if from == K.kCalorie && to == K.electronvolt {
+                return kCalorieToElectronvolt(kCalorie: userInput)
+            } else if from == K.kCalorie && to == K.britishThermal {
+                return kCalorieToBritishTherm(kCalorie: userInput)
+            } else if from == K.kCalorie && to == K.usTherm {
+                return kCalorieToUSTherm(kCalorie: userInput)
+            } else if from == K.kCalorie && to == K.footPound {
+                return kCalorieToFootPound(kCalorie: userInput)
+            } else if from == K.wattHour && to == K.joule {
+                return wattHourToJoule(wattHour: userInput)
+            } else if from == K.wattHour && to == K.kJoule {
+                return wattHourToKJoule(wattHour: userInput)
+            } else if from == K.wattHour && to == K.gramCalorie {
+                return wattHourToGramCalorie(wattHour: userInput)
+            } else if from == K.wattHour && to == K.kCalorie {
+                return wattHourToKcalorie(wattHour: userInput)
+            } else if from == K.wattHour && to == K.kilowattHour {
+                return wattHourToKWattHour(wattHour: userInput)
+            } else if from == K.wattHour && to == K.electronvolt {
+                return wattHourToElectronvolt(wattHour: userInput)
+            } else if from == K.wattHour && to == K.britishThermal {
+                return wattHourToBritishTherm(wattHour: userInput)
+            } else if from == K.wattHour && to == K.usTherm {
+                return wattHourToUSTherm(wattHour: userInput)
+            } else if from == K.wattHour && to == K.footPound {
+                return wattHourToFootPound(wattHour: userInput)
+            } else if from == K.kilowattHour && to == K.joule {
+                return kWattHourToJoule(kWattHour: userInput)
+            } else if from == K.kilowattHour && to == K.kJoule {
+                return kWattHourToJoule(kWattHour: userInput)
+            } else if from == K.kilowattHour && to == K.gramCalorie {
+                return kWattHourToGramCalorie(kWattHour: userInput)
+            } else if from == K.kilowattHour && to == K.kCalorie {
+                return kWattHourToKcalorie(kWattHour: userInput)
+            } else if from == K.kilowattHour && to == K.wattHour {
+                return kWattHourToWattHour(kWattHour: userInput)
+            } else if from == K.kilowattHour && to == K.electronvolt {
+                return kWattHourToElectronvold(kWattHour: userInput)
+            } else if from == K.kilowattHour && to == K.britishThermal {
+                return kWattHourToBritishTherm(kWattHour: userInput)
+            } else if from == K.kilowattHour && to == K.usTherm {
+                return kWattHourToUSTherm(kWattHour: userInput)
+            } else if from == K.kilowattHour && to == K.footPound {
+                return kWattHourToFootPound(kWattHour: userInput)
+            } else if from == K.electronvolt && to == K.joule {
+                return electronvoltToJoule(electronvolt: userInput)
+            } else if from == K.electronvolt && to == K.kJoule {
+                return electronvoltToKJoule(electronvolt: userInput)
+            } else if from == K.electronvolt && to == K.gramCalorie {
+                return electronvoltToGramCalorie(electronvolt: userInput)
+            } else if from == K.electronvolt && to == K.kCalorie {
+                return electronvoltToKcalorie(electronvolt: userInput)
+            } else if from == K.electronvolt && to == K.wattHour {
+                return electronvoltToWattHour(electronvolt: userInput)
+            } else if from == K.electronvolt && to == K.kilowattHour {
+                return electronvoltToKWattHour(electronvolt: userInput)
+            } else if from == K.electronvolt && to == K.britishThermal {
+                return electronvoltToBritishTherm(electronvolt: userInput)
+            } else if from == K.electronvolt && to == K.usTherm {
+                return electronvoltToUSTherm(electronvolt: userInput)
+            } else if from == K.electronvolt && to == K.footPound {
+                return electronvoltToFootPound(electronvolt: userInput)
+            } else if from == K.britishThermal && to == K.joule {
+                return britishThermToJoule(britishTherm: userInput)
+            } else if from == K.britishThermal && to == K.kJoule {
+                return britishThermToKjoule(britishTherm: userInput)
+            } else if from == K.britishThermal && to == K.gramCalorie {
+                return britishThermToGramCalorie(britishTherm: userInput)
+            } else if from == K.britishThermal && to == K.kCalorie {
+                return britishThermToKcalorie(britishTherm: userInput)
+            } else if from == K.britishThermal && to == K.wattHour {
+                return britishThermToWattHour(britishTherm: userInput)
+            } else if from == K.britishThermal && to == K.kilowattHour {
+                return britishThermToKWattHour(britishTherm: userInput)
+            } else if from == K.britishThermal && to == K.electronvolt {
+                return britishThermToElectronvolt(britishTherm: userInput)
+            } else if from == K.britishThermal && to == K.usTherm {
+                return britishThermToUSTherm(britishTherm: userInput)
+            } else if from == K.britishThermal && to == K.footPound {
+                return britishThermToFootPound(britishTherm: userInput)
+            } else if from == K.usTherm && to == K.joule {
+                return usThermToJoule(usTherm: userInput)
+            } else if from == K.usTherm && to == K.kJoule {
+                return usThermToKjoule(usTherm: userInput)
+            } else if from == K.usTherm && to == K.gramCalorie {
+                return usThermToGramCalorie(usTherm: userInput)
+            } else if from == K.usTherm && to == K.kCalorie {
+                return usThermToKCalorie(usTherm: userInput)
+            } else if from == K.usTherm && to == K.wattHour {
+                return usThermToWattHour(usTherm: userInput)
+            } else if from == K.usTherm && to == K.kilowattHour {
+                return usThermToKWattHour(usTherm: userInput)
+            } else if from == K.usTherm && to == K.electronvolt {
+                return usThermToElectronvolt(usTherm: userInput)
+            } else if from == K.usTherm && to == K.britishThermal {
+                return usThermToBritishTherm(usTherm: userInput)
+            } else if from == K.usTherm && to == K.footPound {
+                return usThermToFootPound(usTherm: userInput)
+            }
             
         default:
             print("Error occured in Model unit convert function")
@@ -2363,7 +2536,17 @@ struct K {
     static let stone = "Stone"
     static let pound = "Pound"
     static let ounce = "Ounce"
-    
+    // Energy
+    static let joule = "Joule"
+    static let kJoule = "Kilojoule"
+    static let gramCalorie = "Gram calorie"
+    static let kCalorie = "Kilocalorie"
+    static let wattHour = "Watt Hour"
+    static let kilowattHour = "Kilowatt Hour"
+    static let electronvolt = "Electronvolt"
+    static let britishThermal = "British thermal"
+    static let usTherm = "US thermal"
+    static let footPound = "Foot-pound"
 }
 
 // MARK: - All the conversion functions are here!
@@ -5511,6 +5694,276 @@ extension Unit {
     }
     func ounceToPound(ounce: String) -> Double {
         return Double(ounce)! / 16.0
+    }
+    func jouleToKjoule(joule: String) -> Double {
+        return Double(joule)! / 1000.0
+    }
+    func jouleToGramCalorie(joule: String) -> Double {
+        return Double(joule)! / 4.184
+    }
+    func jouleToKCalorie(joule: String) -> Double {
+        return Double(joule)! / 4184
+    }
+    func jouleToWattHour(joule: String) -> Double {
+        return Double(joule)! / 3600
+    }
+    func jouleToKilowattHour(joule: String) -> Double {
+        return Double(joule)! / (3.6e6)
+    }
+    func jouleToElectronvolt(joule: String) -> Double {
+        return Double(joule)! * 6.242e18
+    }
+    func jouleToBritishThermal(joule: String) -> Double {
+        return Double(joule)! * 0.000947817
+    }
+    func jouleToUsTherm(joule: String) -> Double {
+        return Double(joule)! * 9.4804e-9
+    }
+    func jouleToFootPound(joule: String) -> Double {
+        return Double(joule)! * 0.737562
+    }
+    func kJouleToJoule(kJoule: String) -> Double {
+        return Double(kJoule)! * 1000
+    }
+    func kJouleToGramCalorie(kJoule: String) -> Double {
+        return Double(kJoule)! * 239.006
+    }
+    func kJouleToKCalorie(kJoule: String) -> Double {
+        return Double(kJoule)! / 4.184
+    }
+    func kJouleToWattHour(kJoule: String) -> Double {
+        return Double(kJoule)! / 3.6
+    }
+    func kJouleToKilowattHour(kJoule: String) -> Double {
+        return Double(kJoule)! / 3600
+    }
+    func kJouleToElectronvolt(kJoule: String) -> Double {
+        return Double(kJoule)! * 6.242e21
+    }
+    func kJouleToBritishThermal(kJoule: String) -> Double {
+        return Double(kJoule)! / 1.055
+    }
+    func kJouleToUSTherm(kJoule: String) -> Double {
+        return Double(kJoule)! * 9.4804e-6
+    }
+    func kJouleToFootPound(kJoule: String) -> Double {
+        return Double(kJoule)! * 737.562
+    }
+    func gramCalorieToJoule(gramCalorie: String) -> Double {
+        return Double(gramCalorie)! * 4.184
+    }
+    func gramCalorieToKjoule(gramCalorie: String) -> Double {
+        return Double(gramCalorie)! * 0.004184
+    }
+    func gramCalorieToKcalorie(gramCalorie: String) -> Double {
+        return Double(gramCalorie)! / 1000.0
+    }
+    func gramCalorieToWattHour(gramCalorie: String) -> Double {
+        return Double(gramCalorie)! * 0.00116222
+    }
+    func gramCalorieToKWattHour(gramCalorie: String) -> Double {
+        return Double(gramCalorie)! * 1.1622e-6
+    }
+    func gramCalorieToElectronvold(gramCalorie: String) -> Double {
+        return Double(gramCalorie)! * 2.611e19
+    }
+    func gramCalorieToBritishTherm(gramCalorie: String) -> Double {
+        return Double(gramCalorie)! * 0.00396567
+    }
+    func gramCalorieToUSTherm(gramCalorie: String) -> Double {
+        return Double(gramCalorie)! / (2.521e7)
+    }
+    func gramCalorieToFootPound(gramCalorie: String) -> Double {
+        return Double(gramCalorie)! * 3.08596
+    }
+    func kCalorieToJoule(kCalorie: String) -> Double {
+        return Double(kCalorie)! * 4184
+    }
+    func kCalorieToKJoule(kCalorie: String) -> Double {
+        return Double(kCalorie)! * 4.184
+    }
+    func kCalorieToGramCalorie(kCalorie: String) -> Double {
+        return Double(kCalorie)! * 1000
+    }
+    func kCalorieToWattHour(kCalorie: String) -> Double {
+        return Double(kCalorie)! * 1.16222
+    }
+    func kCalorieToKilowattHour(kCalorie: String) -> Double {
+        return Double(kCalorie)! * 0.00116222
+    }
+    func kCalorieToElectronvolt(kCalorie: String) -> Double {
+        return Double(kCalorie)! * 2.611e22
+    }
+    func kCalorieToBritishTherm(kCalorie: String) -> Double {
+        return Double(kCalorie)! * 3.96567
+    }
+    func kCalorieToUSTherm(kCalorie: String) -> Double {
+        return Double(kCalorie)! * 3.9666e-5
+    }
+    func kCalorieToFootPound(kCalorie: String) -> Double {
+        return Double(kCalorie)! * 3085.96
+    }
+    func wattHourToJoule(wattHour: String) -> Double {
+        return Double(wattHour)! * 3600.0
+    }
+    func wattHourToKJoule(wattHour: String) -> Double {
+        return Double(wattHour)! * 3.6
+    }
+    func wattHourToGramCalorie(wattHour: String) -> Double {
+        return Double(wattHour)! * 860.421
+    }
+    func wattHourToKcalorie(wattHour: String) -> Double {
+        return Double(wattHour)! * 0.860421
+    }
+    func wattHourToKWattHour(wattHour: String) -> Double {
+        return Double(wattHour)! * 0.001
+    }
+    func wattHourToElectronvolt(wattHour: String) -> Double {
+        return Double(wattHour)! * 2.247e22
+    }
+    func wattHourToBritishTherm(wattHour: String) -> Double {
+        return Double(wattHour)! * 3.41214
+    }
+    func wattHourToUSTherm(wattHour: String) -> Double {
+        return Double(wattHour)! * 3.413e-5
+    }
+    func wattHourToFootPound(wattHour: String) -> Double {
+        return Double(wattHour)! * 2655.22
+    }
+    func kWattHourToJoule(kWattHour: String) -> Double {
+        return Double(kWattHour)! * 3.6e6
+    }
+    func kWattHourToKjoule(kWattHour: String) -> Double {
+        return Double(kWattHour)! * 3600
+    }
+    func kWattHourToGramCalorie(kWattHour: String) -> Double {
+        return Double(kWattHour)! * 860421
+    }
+    func kWattHourToKcalorie(kWattHour: String) -> Double {
+        return Double(kWattHour)! * 860.421
+    }
+    func kWattHourToWattHour(kWattHour: String) -> Double {
+        return Double(kWattHour)! * 1000.0
+    }
+    func kWattHourToElectronvold(kWattHour: String) -> Double {
+        return Double(kWattHour)! * 2.247e25
+    }
+    func kWattHourToBritishTherm(kWattHour: String) -> Double {
+        return Double(kWattHour)! * 3412.14
+    }
+    func kWattHourToUSTherm(kWattHour: String) -> Double {
+        return Double(kWattHour)! * 0.0341296
+    }
+    func kWattHourToFootPound(kWattHour: String) -> Double {
+        return Double(kWattHour)! * 2.655e6
+    }
+    func electronvoltToJoule(electronvolt: String) -> Double {
+        return Double(electronvolt)! * 1.6022e-19
+    }
+    func electronvoltToKJoule(electronvolt: String) -> Double {
+        return Double(electronvolt)! * 1.6022e-22
+    }
+    func electronvoltToGramCalorie(electronvolt: String) -> Double {
+        return Double(electronvolt)! * 3.8293e-20
+    }
+    func electronvoltToKcalorie(electronvolt: String) -> Double {
+        return Double(electronvolt)! * 3.8293e-23
+    }
+    func electronvoltToWattHour(electronvolt: String) -> Double {
+        return Double(electronvolt)! * 4.4505e-23
+    }
+    func electronvoltToKWattHour(electronvolt: String) -> Double {
+        return Double(electronvolt)! * 4.4505e-26
+    }
+    func electronvoltToBritishTherm(electronvolt: String) -> Double {
+        return Double(electronvolt)! * 1.5186e-22
+    }
+    func electronvoltToUSTherm(electronvolt: String) -> Double {
+        return Double(electronvolt)! * 1.5189e-27
+    }
+    func electronvoltToFootPound(electronvolt: String) -> Double {
+        return Double(electronvolt)! * 1.1817e-19
+    }
+    func britishThermToJoule(britishTherm: String) -> Double {
+        return Double(britishTherm)! * 1055.06
+    }
+    func britishThermToKjoule(britishTherm: String) -> Double {
+        return Double(britishTherm)! * 1.05506
+    }
+    func britishThermToGramCalorie(britishTherm: String) -> Double {
+        return Double(britishTherm)! * 252.164
+    }
+    func britishThermToKcalorie(britishTherm: String) -> Double {
+        return Double(britishTherm)! * 0.252164
+    }
+    func britishThermToWattHour(britishTherm: String) -> Double {
+        return Double(britishTherm)! * 0.293071
+    }
+    func britishThermToKWattHour(britishTherm: String) -> Double {
+        return Double(britishTherm)! * 0.000293071
+    }
+    func britishThermToElectronvolt(britishTherm: String) -> Double {
+        return Double(britishTherm)! * 6.585e21
+    }
+    func britishThermToUSTherm(britishTherm: String) -> Double {
+        return Double(britishTherm)! * 1.0002e-5
+    }
+    func britishThermToFootPound(britishTherm: String) -> Double {
+        return Double(britishTherm)! * 778.169
+    }
+    func usThermToJoule(usTherm: String) -> Double {
+        return Double(usTherm)! * 1.055e8
+    }
+    func usThermToKjoule(usTherm: String) -> Double {
+        return Double(usTherm)! * 105480
+    }
+    func usThermToGramCalorie(usTherm: String) -> Double {
+        return Double(usTherm)! * 2.521e7
+    }
+    func usThermToKCalorie(usTherm: String) -> Double {
+        return Double(usTherm)! * 25210.4
+    }
+    func usThermToWattHour(usTherm: String) -> Double {
+        return Double(usTherm)! * 29300.1
+    }
+    func usThermToKWattHour(usTherm: String) -> Double {
+        return Double(usTherm)! * 29.3001
+    }
+    func usThermToElectronvolt(usTherm: String) -> Double {
+        return Double(usTherm)! * 6.584e26
+    }
+    func usThermToBritishTherm(usTherm: String) -> Double {
+        return Double(usTherm)! * 99976.1
+    }
+    func usThermToFootPound(usTherm: String) -> Double {
+        return Double(usTherm)! * 7.78e7
+    }
+    func footPoundToJoule(footPound: String) -> Double {
+        return Double(footPound)! * 1.35582
+    }
+    func footPoundToKJoule(footPound: String) -> Double {
+        return Double(footPound)! * 0.00135582
+    }
+    func footPoundToGramCalorie(footPound: String) -> Double {
+        return Double(footPound)! * 0.324048
+    }
+    func footPoundToKCalorie(footPound: String) -> Double {
+        return Double(footPound)! * 0.000324048
+    }
+    func footPoundToWattHour(footPound: String) -> Double {
+        return Double(footPound)! * 0.000376616
+    }
+    func footPoundToKWattHour(footPound: String) -> Double {
+        return Double(footPound)! * 3.7662e-7
+    }
+    func footPoundToElectronvolt(footPound: String) -> Double {
+        return Double(footPound)! * 8.462e18
+    }
+    func footPoundToBritishTherm(footPound: String) -> Double {
+        return Double(footPound)! * 0.00128507
+    }
+    func footPoundToUSTherm(footPound: String) -> Double {
+        return Double(footPound)! * 1.2854e-8
     }
 }
 
