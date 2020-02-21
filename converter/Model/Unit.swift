@@ -126,6 +126,13 @@ struct Unit {
                     [K.decade, K.decade],
                     [K.century, K.century]
             ]
+        case "Speed":
+            return [[K.milesPerHour, K.milesPerHour],
+                    [K.footPerSecond, K.footPerSecond],
+                    [K.meterPerSecond, K.meterPerSecond],
+                    [K.kilometerPerHour, K.kilometerPerHour],
+                    [K.knot, K.knot]
+            ]
         default:
             return [["Unit picker"]]
         }
@@ -1959,6 +1966,50 @@ struct Unit {
             } else if from == K.century && to == K.decade {
                 return centuryToDecade(century: userInput)
             }
+        // MARK: - Speed
+        case "Speed":
+            if from == K.milesPerHour && to == K.footPerSecond {
+                return milesPerHourToFootPerSecond(milesPerHour: userInput)
+            } else if from == K.milesPerHour && to == K.meterPerSecond {
+                return milesPerHourToMeterPerSecond(milesPerHour: userInput)
+            } else if from == K.milesPerHour && to == K.kilometerPerHour {
+                return milesPerHourToKilometerPerHour(milesPerHour: userInput)
+            } else if from == K.milesPerHour && to == K.knot {
+                return milesPerHourToKnot(milesPerHour: userInput)
+            } else if from == K.footPerSecond && to == K.milesPerHour {
+                return footPerSecondToMilesPerHour(footPerSecond: userInput)
+            } else if from == K.footPerSecond && to == K.meterPerSecond {
+                return footPerSecondToMeterPerSecond(footPerSecond: userInput)
+            } else if from == K.footPerSecond && to == K.kilometerPerHour {
+                return footPerSecondToKilometerPerHour(footPerSecond: userInput)
+            } else if from == K.footPerSecond && to == K.knot {
+                return footPerSecondToKnot(footPerSecond: userInput)
+            } else if from == K.meterPerSecond && to == K.milesPerHour {
+                return meterPerSecondToMilesPerHour(meterPerSecond: userInput)
+            } else if from == K.meterPerSecond && to == K.footPerSecond {
+                return meterPerSecondToFootPerSecond(meterPerSecond: userInput)
+            } else if from == K.meterPerSecond && to == K.kilometerPerHour {
+                return meterPerSecondToKilometerPerHour(meterPerSecond: userInput)
+            } else if from == K.meterPerSecond && to == K.knot {
+                return meterPerSecondToKnot(meterPerSecond: userInput)
+            } else if from == K.kilometerPerHour && to == K.milesPerHour {
+                return kilometerPerHourToMilesPerHour(kilometerPerHour: userInput)
+            } else if from == K.kilometerPerHour && to == K.footPerSecond {
+                return kilometerPerHourToFootPerSecond(kilometerPerHour: userInput)
+            } else if from == K.kilometerPerHour && to == K.meterPerSecond {
+                return kilometerPerHourToMeterPerSecond(kilometerPerHour: userInput)
+            } else if from == K.kilometerPerHour && to == K.knot {
+                return kilometerPerHourToKnot(kilometerPerHour: userInput)
+            } else if from == K.knot && to == K.milesPerHour {
+                return knotToMilesPerHour(knot: userInput)
+            } else if from == K.knot && to == K.footPerSecond {
+                return knotToFootPerSecond(knot: userInput)
+            } else if from == K.knot && to == K.meterPerSecond {
+                return knotToMeterPerSecond(knot: userInput)
+            } else if from == K.knot && to == K.kilometerPerHour {
+                return knotToKilometerPerHour(knot: userInput)
+            }
+            
             
         default:
             print("Error occured in Model unit convert function")
@@ -2044,6 +2095,12 @@ struct K {
     static let calendarYear = "Calendar Year"
     static let decade = "Decade"
     static let century = "Century"
+    // Speed
+    static let milesPerHour = "Miles per hour"
+    static let footPerSecond = "Foot per second"
+    static let meterPerSecond = "Meter per second"
+    static let kilometerPerHour = "Kilometer per hour"
+    static let knot = "Knot"
 }
 
 // MARK: - All the conversion functions are here!
@@ -4801,6 +4858,66 @@ extension Unit {
     }
     func centuryToDecade(century: String) -> Double {
         return Double(century)! * 10
+    }
+    func milesPerHourToFootPerSecond(milesPerHour: String) -> Double {
+        return Double(milesPerHour)! * 1.46667
+    }
+    func milesPerHourToMeterPerSecond(milesPerHour: String) -> Double {
+        return Double(milesPerHour)! / 2.237
+    }
+    func milesPerHourToKilometerPerHour(milesPerHour: String) -> Double {
+        return Double(milesPerHour)! * 1.60934
+    }
+    func milesPerHourToKnot(milesPerHour: String) -> Double {
+        return Double(milesPerHour)! * 0.868976
+    }
+    func footPerSecondToMilesPerHour(footPerSecond: String) -> Double {
+        return Double(footPerSecond)! * 0.681818
+    }
+    func footPerSecondToMeterPerSecond(footPerSecond: String) -> Double {
+        return Double(footPerSecond)! * 0.3048
+    }
+    func footPerSecondToKilometerPerHour(footPerSecond: String) -> Double {
+        return Double(footPerSecond)! * 1.09728
+    }
+    func footPerSecondToKnot(footPerSecond: String) -> Double {
+        return Double(footPerSecond)! * 0.592484
+    }
+    func meterPerSecondToMilesPerHour(meterPerSecond: String) -> Double {
+        return Double(meterPerSecond)! * 2.23694
+    }
+    func meterPerSecondToFootPerSecond(meterPerSecond: String) -> Double {
+        return Double(meterPerSecond)! * 3.28084
+    }
+    func meterPerSecondToKilometerPerHour(meterPerSecond: String) -> Double {
+        return Double(meterPerSecond)! * 3.6
+    }
+    func meterPerSecondToKnot(meterPerSecond: String) -> Double {
+        return Double(meterPerSecond)! * 1.94384
+    }
+    func kilometerPerHourToMilesPerHour(kilometerPerHour: String) -> Double {
+        return Double(kilometerPerHour)! * 0.621371
+    }
+    func kilometerPerHourToFootPerSecond(kilometerPerHour: String) -> Double {
+        return Double(kilometerPerHour)! * 0.911344
+    }
+    func kilometerPerHourToMeterPerSecond(kilometerPerHour: String) -> Double {
+        return Double(kilometerPerHour)! / 3.6
+    }
+    func kilometerPerHourToKnot(kilometerPerHour: String) -> Double {
+        return Double(kilometerPerHour)! / 1.852
+    }
+    func knotToMilesPerHour(knot: String) -> Double {
+        return Double(knot)! * 1.15078
+    }
+    func knotToFootPerSecond(knot: String) -> Double {
+        return Double(knot)! * 1.68781
+    }
+    func knotToMeterPerSecond(knot: String) -> Double {
+        return Double(knot)! * 0.514444
+    }
+    func knotToKilometerPerHour(knot: String) -> Double {
+        return Double(knot)! * 1.852
     }
 }
 
