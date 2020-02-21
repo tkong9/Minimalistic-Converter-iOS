@@ -17,7 +17,7 @@ class MainVC: UIViewController {
         Unit(unitName: "Area"),
         Unit(unitName: "Bits"),
         Unit(unitName: "Density"),
-        Unit(unitName: "Force"),
+        Unit(unitName: "Energy"),
         Unit(unitName: "Length"),
         Unit(unitName: "Mass"),
         Unit(unitName: "Pressure"),

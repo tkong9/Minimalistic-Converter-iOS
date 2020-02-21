@@ -23,7 +23,7 @@ struct Unit {
             return "0.square"
         case "Density":
             return "lock"
-        case "Force":
+        case "Energy":
             return "bolt.horizontal"
         case "Length":
             return "slider.horizontal.3"
@@ -139,6 +139,21 @@ struct Unit {
                     [K.pascal, K.pascal],
                     [K.poundForcePerSquareInch, K.poundForcePerSquareInch],
                     [K.torr, K.torr]
+            ]
+        case "Mass":
+            return [[K.metricTon, K.metricTon],
+                    [K.kilogram, K.kilogram],
+                    [K.gram, K.gram],
+                    [K.milligram, K.milligram],
+                    [K.microgram, K.microgram],
+                    [K.imperialTon, K.imperialTon],
+                    [K.USTon, K.USTon],
+                    [K.stone, K.stone],
+                    [K.pound, K.pound],
+                    [K.ounce, K.ounce]
+            ]
+        case "Energy":
+            return [[]
             ]
         default:
             return [["Unit picker"]]
@@ -2059,6 +2074,187 @@ struct Unit {
             } else if from == K.torr && to == K.poundForcePerSquareInch {
                 return torrToPsi(torr: userInput)
             }
+            // MARK: -MASS
+        case "Mass":
+            if from == K.metricTon && to == K.kilogram {
+                return metricTonToKilogram(metricTon: userInput)
+            } else if from == K.metricTon && to == K.gram {
+                return metricTonToGram(metricTon: userInput)
+            } else if from == K.metricTon && to == K.milligram {
+                return metricTonToMilligram(metricTon: userInput)
+            } else if from == K.metricTon && to == K.microgram {
+                return metricTonToMicrogram(metricTon: userInput)
+            } else if from == K.metricTon && to == K.imperialTon {
+                return metricTonToImperialTon(metricTon: userInput)
+            } else if from == K.metricTon && to == K.USTon {
+                return metricTonToUSTon(metricTon: userInput)
+            } else if from == K.metricTon && to == K.stone {
+                return metricTonToStone(metricTon: userInput)
+            } else if from == K.metricTon && to == K.ounce {
+                return metricTonToOunce(metricTon: userInput)
+            } else if from == K.kilogram && to == K.metricTon {
+                return kilogramToMetricTon(kilogram: userInput)
+            } else if from == K.kilogram && to == K.gram {
+                return kilogramToGram(kilogram: userInput)
+            } else if from == K.kilogram && to == K.milligram {
+                return kilogramToMilligram(kilogram: userInput)
+            } else if from == K.kilogram && to == K.microgram {
+                return kilogramToMicrogram(kilogram: userInput)
+            } else if from == K.kilogram && to == K.imperialTon {
+                return kilogramToImperialTon(kilogram: userInput)
+            } else if from == K.kilogram && to == K.USTon {
+                return kilogramToUSTon(kilogram: userInput)
+            } else if from == K.kilogram && to == K.stone {
+                return kilogramToStone(kilogram: userInput)
+            } else if from == K.kilogram && to == K.pound {
+                return kilogramToPound(kilogram: userInput)
+            } else if from == K.kilogram && to == K.ounce {
+                return kilogramToOunce(kilogram: userInput)
+            } else if from == K.gram && to == K.metricTon {
+                return gramToMetricTon(gram: userInput)
+            } else if from == K.gram && to == K.kilogram {
+                return gramToKilogram(gram: userInput)
+            } else if from == K.gram && to == K.milligram {
+                return gramToMilligram(gram: userInput)
+            } else if from == K.gram && to == K.microgram {
+                return gramToMicrogram(gram: userInput)
+            } else if from == K.gram && to == K.imperialTon {
+                return gramToImperialTon(gram: userInput)
+            } else if from == K.gram && to == K.USTon {
+                return gramToUSTon(gram: userInput)
+            } else if from == K.gram && to == K.stone {
+                return gramToStone(gram: userInput)
+            } else if from == K.gram && to == K.pound {
+                return gramToPound(gram: userInput)
+            } else if from == K.gram && to == K.ounce {
+                return gramToOunce(gram: userInput)
+            } else if from == K.milligram && to == K.metricTon {
+                return milligramToMetricTon(milligram: userInput)
+            } else if from == K.milligram && to == K.kilogram {
+                return milligramToKilogram(milligram: userInput)
+            } else if from == K.milligram && to == K.gram {
+                return milligramToGram(milligram: userInput)
+            } else if from == K.milligram && to == K.microgram {
+                return milligramToMicrogram(milligram: userInput)
+            } else if from == K.milligram && to == K.imperialTon {
+                return milligramToImperialTon(milligram: userInput)
+            } else if from == K.milligram && to == K.USTon {
+                return milligramToUSTon(milligram: userInput)
+            } else if from == K.milligram && to == K.stone {
+                return milligramToStone(milligram: userInput)
+            } else if from == K.milligram && to == K.pound {
+                return milligramToPound(milligram: userInput)
+            } else if from == K.milligram && to == K.ounce {
+                return milligramToOunce(milligram: userInput)
+            } else if from == K.microgram && to == K.metricTon {
+                return microgramToMetricTon(microgram: userInput)
+            } else if from == K.microgram && to == K.kilogram {
+                return microgramToKilogram(microgram: userInput)
+            } else if from == K.microgram && to == K.gram {
+                return microgramToGram(microgram: userInput)
+            } else if from == K.microgram && to == K.milligram {
+                return microgramToMilligram(microgram: userInput)
+            } else if from == K.microgram && to == K.imperialTon {
+                return microgramToImperialTon(microgram: userInput)
+            } else if from == K.microgram && to == K.USTon {
+                return microgramToUSTon(microgram: userInput)
+            } else if from == K.microgram && to == K.stone {
+                return microgramToStone(microgram: userInput)
+            } else if from == K.microgram && to == K.pound {
+                return microgramToPound(microgram: userInput)
+            } else if from == K.microgram && to == K.ounce {
+                return microgramToOunce(microgram: userInput)
+            } else if from == K.imperialTon && to == K.metricTon {
+                return imperialTonToMetricTon(imperialTon: userInput)
+            } else if from == K.imperialTon && to == K.kilogram {
+                return imperialTonToKilogram(imperialTon: userInput)
+            } else if from == K.imperialTon && to == K.gram {
+                return imperialTonToGram(imperialTon: userInput)
+            } else if from == K.imperialTon && to == K.milligram {
+                return imperialTonToMilligram(imperialTon: userInput)
+            } else if from == K.imperialTon && to == K.microgram {
+                return imperialTonToMicrogram(imperialTon: userInput)
+            } else if from == K.imperialTon && to == K.USTon {
+                return imperialTonToUSTon(imperialTon: userInput)
+            } else if from == K.imperialTon && to == K.stone {
+                return imperialTonToStone(imperialTon: userInput)
+            } else if from == K.imperialTon && to == K.pound {
+                return imperialTonToPound(imperialTon: userInput)
+            } else if from == K.imperialTon && to == K.ounce {
+                return imperialTonToOunce(imperialTon: userInput)
+            } else if from == K.USTon && to == K.metricTon {
+                return usTonToMetricTon(usTon: userInput)
+            } else if from == K.USTon && to == K.kilogram {
+                return usTonToKilogram(usTon: userInput)
+            } else if from == K.USTon && to == K.gram {
+                return usTonToGram(usTon: userInput)
+            } else if from == K.USTon && to == K.milligram {
+                return usTonToMilligram(usTon: userInput)
+            } else if from == K.USTon && to == K.microgram {
+                return usTonToMicrogram(usTon: userInput)
+            } else if from == K.USTon && to == K.imperialTon {
+                return usTonToImperialTon(usTon: userInput)
+            } else if from == K.USTon && to == K.stone {
+                return usTonToStone(usTon: userInput)
+            } else if from == K.USTon && to == K.pound {
+                return usTonToPound(usTon: userInput)
+            } else if from == K.USTon && to == K.ounce {
+                return usTonToOunce(usTon: userInput)
+            } else if from == K.stone && to == K.metricTon {
+                return stoneToMetricTon(stone: userInput)
+            } else if from == K.stone && to == K.kilogram {
+                return stoneToKilogram(stone: userInput)
+            } else if from == K.stone && to == K.gram {
+                return stoneToGram(stone: userInput)
+            } else if from == K.stone && to == K.milligram {
+                return stoneToMilligram(stone: userInput)
+            } else if from == K.stone && to == K.microgram {
+                return stoneToMicrogram(stone: userInput)
+            } else if from == K.stone && to == K.imperialTon {
+                return stoneToImperialTon(stone: userInput)
+            } else if from == K.stone && to == K.USTon {
+                return stoneToUSTon(stone: userInput)
+            } else if from == K.stone && to == K.pound {
+                return stoneToPound(stone: userInput)
+            } else if from == K.stone && to == K.ounce {
+                return stoneToOunce(stone: userInput)
+            } else if from == K.pound && to == K.metricTon {
+                return poundToMetricTon(pound: userInput)
+            } else if from == K.pound && to == K.kilogram {
+                return poundToKilogram(pound: userInput)
+            } else if from == K.pound && to == K.gram {
+                return poundToGram(pound: userInput)
+            } else if from == K.pound && to == K.milligram {
+                return poundToMilligram(pound: userInput)
+            } else if from == K.pound && to == K.microgram {
+                return poundToMicrogram(pound: userInput)
+            } else if from == K.pound && to == K.imperialTon {
+                return poundToImperialTon(pound: userInput)
+            } else if from == K.pound && to == K.USTon {
+                return poundToUSTon(pound: userInput)
+            } else if from == K.pound && to == K.stone {
+                return poundToStone(pound: userInput)
+            }  else if from == K.pound && to == K.ounce {
+                return poundToOunce(pound: userInput)
+            } else if from == K.ounce && to == K.metricTon {
+                return ounceToMetricTon(ounce: userInput)
+            } else if from == K.ounce && to == K.kilogram {
+                return ounceToKilogram(ounce: userInput)
+            } else if from == K.ounce && to == K.gram {
+                return ounceToGram(ounce: userInput)
+            } else if from == K.ounce && to == K.milligram {
+                return ounceToMilligram(ounce: userInput)
+            } else if from == K.ounce && to == K.microgram {
+                return ounceToMicrogram(ounce: userInput)
+            } else if from == K.ounce && to == K.imperialTon {
+                return ounceToImperialTon(ounce: userInput)
+            } else if from == K.ounce && to == K.USTon {
+                return ounceToUSTon(ounce: userInput)
+            } else if from == K.ounce && to == K.stone {
+                return ounceToStone(ounce: userInput)
+            } else if from == K.ounce && to == K.pound {
+                return ounceToPound(ounce: userInput)
+            }
             
         default:
             print("Error occured in Model unit convert function")
@@ -2156,6 +2352,18 @@ struct K {
     static let pascal = "Pascal"
     static let poundForcePerSquareInch = "psi"
     static let torr = "torr"
+    // Mass
+    static let metricTon = "Metric Ton"
+    static let kilogram = "Kilogram"
+    static let gram = "Gram"
+    static let milligram = "Milligram"
+    static let microgram = "Microgram"
+    static let imperialTon = "Imperial Ton"
+    static let USTon = "US Ton"
+    static let stone = "Stone"
+    static let pound = "Pound"
+    static let ounce = "Ounce"
+    
 }
 
 // MARK: - All the conversion functions are here!
@@ -5033,6 +5241,276 @@ extension Unit {
     }
     func torrToPsi(torr: String) -> Double {
         return Double(torr)! / 51.715
+    }
+    func metricTonToKilogram(metricTon: String) -> Double {
+        return Double(metricTon)! * 1000.0
+    }
+    func metricTonToGram(metricTon: String) -> Double {
+        return Double(metricTon)! * 1e6
+    }
+    func metricTonToMilligram(metricTon: String) -> Double {
+        return Double(metricTon)! * 1e9
+    }
+    func metricTonToMicrogram(metricTon: String) -> Double {
+        return Double(metricTon)! * 1e12
+    }
+    func metricTonToImperialTon(metricTon: String) -> Double {
+        return Double(metricTon)! / 1.016
+    }
+    func metricTonToUSTon(metricTon: String) -> Double {
+        return Double(metricTon)! * 1.10231
+    }
+    func metricTonToStone(metricTon: String) -> Double {
+        return Double(metricTon)! * 157.473
+    }
+    func metricTonToPound(metricTon: String) -> Double {
+        return Double(metricTon)! * 2204.62
+    }
+    func metricTonToOunce(metricTon: String) -> Double {
+        return Double(metricTon)! * 35274
+    }
+    func kilogramToMetricTon(kilogram: String) -> Double {
+        return Double(kilogram)! / 1000
+    }
+    func kilogramToGram(kilogram: String) -> Double {
+        return Double(kilogram)! * 1000
+    }
+    func kilogramToMilligram(kilogram: String) -> Double {
+        return Double(kilogram)! * 1e6
+    }
+    func kilogramToMicrogram(kilogram: String) -> Double {
+        return Double(kilogram)! * 1e9
+    }
+    func kilogramToImperialTon(kilogram: String) -> Double {
+        return Double(kilogram)! * 0.000984207
+    }
+    func kilogramToUSTon(kilogram: String) -> Double {
+        return Double(kilogram)! * 0.00110231
+    }
+    func kilogramToStone(kilogram: String) -> Double {
+        return Double(kilogram)! * 0.157473
+    }
+    func kilogramToPound(kilogram: String) -> Double {
+        return Double(kilogram)! * 2.20462
+    }
+    func kilogramToOunce(kilogram: String) -> Double {
+        return Double(kilogram)! * 35.274
+    }
+    func gramToMetricTon(gram: String) -> Double {
+        return Double(gram)! * 1e-6
+    }
+    func gramToKilogram(gram: String) -> Double {
+        return Double(gram)! * 0.001
+    }
+    func gramToMilligram(gram: String) -> Double {
+        return Double(gram)! * 1000
+    }
+    func gramToMicrogram(gram: String) -> Double {
+        return Double(gram)! * 1e6
+    }
+    func gramToImperialTon(gram: String) -> Double {
+        return Double(gram)! / (1.016e6)
+    }
+    func gramToUSTon(gram: String) -> Double {
+        return Double(gram)! * 1.1023e-6
+    }
+    func gramToStone(gram: String) -> Double {
+        return Double(gram)! * 0.000157473
+    }
+    func gramToPound(gram: String) -> Double {
+        return Double(gram)! * 0.00220462
+    }
+    func gramToOunce(gram: String) -> Double {
+        return Double(gram)! * 0.035274
+    }
+    func milligramToMetricTon(milligram: String) -> Double {
+        return Double(milligram)! * 1e-9
+    }
+    func milligramToKilogram(milligram: String) -> Double {
+        return Double(milligram)! * 1e-6
+    }
+    func milligramToGram(milligram: String) -> Double {
+        return Double(milligram)! / 1000.0
+    }
+    func milligramToMicrogram(milligram: String) -> Double {
+        return Double(milligram)! * 1000
+    }
+    func milligramToImperialTon(milligram: String) -> Double {
+        return Double(milligram)! / (1.016e9)
+    }
+    func milligramToUSTon(milligram: String) -> Double {
+        return Double(milligram)! * 1.1023e-9
+    }
+    func milligramToStone(milligram: String) -> Double {
+        return Double(milligram)! * 1.5747e-7
+    }
+    func milligramToPound(milligram: String) -> Double {
+        return Double(milligram)! * 2.2046e-6
+    }
+    func milligramToOunce(milligram: String) -> Double {
+        return Double(milligram)! * 3.5274e-5
+    }
+    func microgramToMetricTon(microgram: String) -> Double {
+        return Double(microgram)! * 1e-12
+    }
+    func microgramToKilogram(microgram: String) -> Double {
+        return Double(microgram)! * 1e-9
+    }
+    func microgramToGram(microgram: String) -> Double {
+        return Double(microgram)! * 1e-6
+    }
+    func microgramToMilligram(microgram: String) -> Double {
+        return Double(microgram)! / 1000.0
+    }
+    func microgramToImperialTon(microgram: String) -> Double {
+        return Double(microgram)! / (1.016e12)
+    }
+    func microgramToUSTon(microgram: String) -> Double {
+        return Double(microgram)! * 1.1023e-12
+    }
+    func microgramToStone(microgram: String) -> Double {
+        return Double(microgram)! * 1.5747e-10
+    }
+    func microgramToPound(microgram: String) -> Double {
+        return Double(microgram)! * 2.2046e-9
+    }
+    func microgramToOunce(microgram: String) -> Double {
+        return Double(microgram)! * 3.5274e-8
+    }
+    func imperialTonToMetricTon(imperialTon: String) -> Double {
+        return Double(imperialTon)! * 1.01605
+    }
+    func imperialTonToKilogram(imperialTon: String) -> Double {
+        return Double(imperialTon)! * 1016.05
+    }
+    func imperialTonToGram(imperialTon: String) -> Double {
+        return Double(imperialTon)! * 1.016e6
+    }
+    func imperialTonToMilligram(imperialTon: String) -> Double {
+        return Double(imperialTon)! * 1.016e9
+    }
+    func imperialTonToMicrogram(imperialTon: String) -> Double {
+        return Double(imperialTon)! * 1.016e12
+    }
+    func imperialTonToUSTon(imperialTon: String) -> Double {
+        return Double(imperialTon)! * 1.12
+    }
+    func imperialTonToStone(imperialTon: String) -> Double {
+        return Double(imperialTon)! * 160
+    }
+    func imperialTonToPound(imperialTon: String) -> Double {
+        return Double(imperialTon)! * 2240
+    }
+    func imperialTonToOunce(imperialTon: String) -> Double {
+        return Double(imperialTon)! * 35840
+    }
+    func usTonToMetricTon(usTon: String) -> Double {
+        return Double(usTon)! * 0.907185
+    }
+    func usTonToKilogram(usTon: String) -> Double {
+        return Double(usTon)! * 907.185
+    }
+    func usTonToGram(usTon: String) -> Double {
+        return Double(usTon)! * 907185
+    }
+    func usTonToMilligram(usTon: String) -> Double {
+        return Double(usTon)! * 9.072e8
+    }
+    func usTonToMicrogram(usTon: String) -> Double {
+        return Double(usTon)! * 9.072e11
+    }
+    func usTonToImperialTon(usTon: String) -> Double {
+        return Double(usTon)! * 0.892857
+    }
+    func usTonToStone(usTon: String) -> Double {
+        return Double(usTon)! * 142.857
+    }
+    func usTonToPound(usTon: String) -> Double {
+        return Double(usTon)! * 2000
+    }
+    func usTonToOunce(usTon: String) -> Double {
+        return Double(usTon)! * 32000
+    }
+    func stoneToMetricTon(stone: String) -> Double {
+        return Double(stone)! * 0.00635029
+    }
+    func stoneToKilogram(stone: String) -> Double {
+        return Double(stone)! * 6.35029
+    }
+    func stoneToGram(stone: String) -> Double {
+        return Double(stone)! * 6350.29
+    }
+    func stoneToMilligram(stone: String) -> Double {
+        return Double(stone)! * 6.35e6
+    }
+    func stoneToMicrogram(stone: String) -> Double {
+        return Double(stone)! * 6.35e9
+    }
+    func stoneToImperialTon(stone: String) -> Double {
+        return Double(stone)! * 0.00625
+    }
+    func stoneToUSTon(stone: String) -> Double {
+        return Double(stone)! * 0.007
+    }
+    func stoneToPound(stone: String) -> Double {
+        return Double(stone)! * 14
+    }
+    func stoneToOunce(stone: String) -> Double {
+        return Double(stone)! * 224
+    }
+    func poundToMetricTon(pound: String) -> Double {
+        return Double(pound)! * 0.000453592
+    }
+    func poundToKilogram(pound: String) -> Double {
+        return Double(pound)! * 0.453592
+    }
+    func poundToGram(pound: String) -> Double {
+        return Double(pound)! * 453.592
+    }
+    func poundToMilligram(pound: String) -> Double {
+        return Double(pound)! * 453592
+    }
+    func poundToMicrogram(pound: String) -> Double {
+        return Double(pound)! * 4.536e8
+    }
+    func poundToImperialTon(pound: String) -> Double {
+        return Double(pound)! * 0.000446429
+    }
+    func poundToUSTon(pound: String) -> Double {
+        return Double(pound)! * 0.0005
+    }
+    func poundToStone(pound: String) -> Double {
+        return Double(pound)! * 0.0714286
+    }
+    func poundToOunce(pound: String) -> Double {
+        return Double(pound)! * 16
+    }
+    func ounceToMetricTon(ounce: String) -> Double {
+        return Double(ounce)! * 2.835e-5
+    }
+    func ounceToKilogram(ounce: String) -> Double {
+        return Double(ounce)! / 35.274
+    }
+    func ounceToGram(ounce: String) -> Double {
+        return Double(ounce)! * 28.3495
+    }
+    func ounceToMilligram(ounce: String) -> Double {
+        return Double(ounce)! * 28349.5
+    }
+    func ounceToMicrogram(ounce: String) -> Double {
+        return Double(ounce)! * 2.835e7
+    }
+    func ounceToImperialTon(ounce: String) -> Double {
+        return Double(ounce)! * 2.7902e-5
+    }
+    func ounceToUSTon(ounce: String) -> Double {
+        return Double(ounce)! * 3.125e-5
+    }
+    func ounceToStone(ounce: String) -> Double {
+        return Double(ounce)! / 224.0
+    }
+    func ounceToPound(ounce: String) -> Double {
+        return Double(ounce)! / 16.0
     }
 }
 
