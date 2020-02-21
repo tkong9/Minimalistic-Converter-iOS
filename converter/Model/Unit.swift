@@ -112,6 +112,20 @@ struct Unit {
                     [K.cubicFoot, K.cubicFoot],
                     [K.cubicInch, K.cubicInch]
             ]
+        case "Time":
+            return [[K.nanosecond, K.nanosecond],
+                    [K.microsecond, K.microsecond],
+                    [K.millisecond, K.millisecond],
+                    [K.second, K.second],
+                    [K.minute, K.minute],
+                    [K.hour, K.hour],
+                    [K.day, K.day],
+                    [K.week, K.week],
+                    [K.month, K.month],
+                    [K.calendarYear, K.calendarYear],
+                    [K.decade, K.decade],
+                    [K.century, K.century]
+            ]
         default:
             return [["Unit picker"]]
         }
@@ -1700,6 +1714,251 @@ struct Unit {
             } else if from == K.cubicInch && to == K.cubicFoot {
                 return cubicInchToCubicFoot(cubicInch: userInput)
             }
+        // MARK: -Time
+        case "Time":
+            if from == K.nanosecond && to == K.microsecond {
+                return nanosecondToMicrosecond(nanosecond: userInput)
+            } else if from == K.nanosecond && to == K.millisecond {
+                return nanosecondToMillisecond(nanosecond: userInput)
+            } else if from == K.nanosecond && to == K.second {
+                return nanosecondToSecond(nanosecond: userInput)
+            } else if from == K.nanosecond && to == K.minute {
+                return nanosecondToMinute(nanosecond: userInput)
+            } else if from == K.nanosecond && to == K.hour {
+                return nanosecondToHour(nanosecond: userInput)
+            } else if from == K.nanosecond && to == K.day {
+                return nanosecondToDay(nanosecond: userInput)
+            } else if from == K.nanosecond && to == K.week {
+                return nanosecondToWeek(nanosecond: userInput)
+            } else if from == K.nanosecond && to == K.month {
+                return nanosecondToMonth(nanosecond: userInput)
+            } else if from == K.nanosecond && to == K.calendarYear {
+                return nanosecondToCalendarYear(nanosecond: userInput)
+            } else if from == K.nanosecond && to == K.decade {
+                return nanosecondToDecade(nanosecond: userInput)
+            } else if from == K.nanosecond && to == K.century {
+                return nanosecondToCentury(nanosecond: userInput)
+            } else if from == K.microsecond && to == K.nanosecond {
+                return microsecondToNanosecond(microsecond: userInput)
+            } else if from == K.microsecond && to == K.millisecond {
+                return microsecondToMillisecond(microsecond: userInput)
+            } else if from == K.microsecond && to == K.second {
+                return microsecondToSecond(microsecond: userInput)
+            } else if from == K.microsecond && to == K.minute {
+                return microsecondToMinute(microsecond: userInput)
+            } else if from == K.microsecond && to == K.hour {
+                return microsecondToHour(microsecond: userInput)
+            } else if from == K.microsecond && to == K.day {
+                return microsecondToDay(microsecond: userInput)
+            } else if from == K.microsecond && to == K.week {
+                return microsecondToWeek(microsecond: userInput)
+            } else if from == K.microsecond && to == K.month {
+                return microsecondToMonth(microsecond: userInput)
+            } else if from == K.microsecond && to == K.calendarYear {
+                return microsecondToCalendarYear(microsecond: userInput)
+            } else if from == K.microsecond && to == K.decade {
+                return microsecondToDecade(microsecond: userInput)
+            } else if from == K.microsecond && to == K.century {
+                return microsecondToCentury(microsecond: userInput)
+            } else if from == K.second && to == K.nanosecond {
+                return secondToNanosecond(second: userInput)
+            } else if from == K.second && to == K.microsecond {
+                return secondToMicrosecond(second: userInput)
+            } else if from == K.second && to == K.millisecond {
+                return secondToMillisecond(second: userInput)
+            } else if from == K.second && to == K.minute {
+                return secondToMinute(second: userInput)
+            } else if from == K.second && to == K.hour {
+                return secondToHour(second: userInput)
+            } else if from == K.second && to == K.day {
+                return secondToDay(second: userInput)
+            } else if from == K.second && to == K.week {
+                return secondToWeek(second: userInput)
+            } else if from == K.second && to == K.month {
+                return secondToMonth(second: userInput)
+            } else if from == K.second && to == K.calendarYear {
+                return secondToCalendarYear(second: userInput)
+            } else if from == K.second && to == K.decade {
+                return secondToDecade(second: userInput)
+            } else if from == K.second && to == K.century {
+                return secondToCentury(second: userInput)
+            } else if from == K.minute && to == K.nanosecond {
+                return minuteToNanosecond(minute: userInput)
+            } else if from == K.minute && to == K.microsecond {
+                return minuteToMicrosecond(minute: userInput)
+            } else if from == K.minute && to == K.millisecond {
+                return minuteToMillisecond(minute: userInput)
+            } else if from == K.minute && to == K.second {
+                return minuteToSecond(minute: userInput)
+            } else if from == K.minute && to == K.hour {
+                return minuteToHour(minute: userInput)
+            } else if from == K.minute && to == K.day {
+                return minuteToDay(minute: userInput)
+            } else if from == K.minute && to == K.week {
+                return minuteToWeek(minute: userInput)
+            } else if from == K.minute && to == K.month {
+                return minuteToMonth(minute: userInput)
+            } else if from == K.minute && to == K.calendarYear {
+                return minuteToCalendarYear(minute: userInput)
+            } else if from == K.minute && to == K.decade {
+                return minuteToDecade(minute: userInput)
+            } else if from == K.minute && to == K.century {
+                return minuteToCentury(minute: userInput)
+            } else if from == K.hour && to == K.nanosecond {
+                return hourToNanosecond(hour: userInput)
+            } else if from == K.hour && to == K.microsecond {
+                return hourToMicrosecond(hour: userInput)
+            } else if from == K.hour && to == K.millisecond {
+                return hourToMillisecond(hour: userInput)
+            } else if from == K.hour && to == K.second {
+                return hourToSecond(hour: userInput)
+            } else if from == K.hour && to == K.minute {
+                return hourToMinute(hour: userInput)
+            } else if from == K.hour && to == K.day {
+                return hourToDay(hour: userInput)
+            } else if from == K.hour && to == K.week {
+                return hourToWeek(hour: userInput)
+            } else if from == K.hour && to == K.month {
+                return hourToMonth(hour: userInput)
+            } else if from == K.hour && to == K.calendarYear {
+                return hourToCalendarYear(hour: userInput)
+            } else if from == K.hour && to == K.decade {
+                return hourToDecade(hour: userInput)
+            } else if from == K.hour && to == K.century {
+                return hourToCentury(hour: userInput)
+            } else if from == K.day && to == K.nanosecond {
+                return dayToNanosecond(day: userInput)
+            } else if from == K.day && to == K.microsecond {
+                return dayToMicrosecond(day: userInput)
+            } else if from == K.day && to == K.millisecond {
+                return dayToMillisecond(day: userInput)
+            } else if from == K.day && to == K.second {
+                return dayToSecond(day: userInput)
+            } else if from == K.day && to == K.minute {
+                return dayToMinute(day: userInput)
+            } else if from == K.day && to == K.hour {
+                return dayToHour(day: userInput)
+            } else if from == K.day && to == K.week {
+                return dayToWeek(day: userInput)
+            } else if from == K.day && to == K.month {
+                return dayToMonth(day: userInput)
+            } else if from == K.day && to == K.calendarYear {
+                return dayToCalendarYear(day: userInput)
+            } else if from == K.day && to == K.decade {
+                return dayToDecade(day: userInput)
+            } else if from == K.day && to == K.century {
+                return dayToCentury(day: userInput)
+            } else if from == K.week && to == K.nanosecond {
+                return weekToNanosecond(week: userInput)
+            } else if from == K.week && to == K.microsecond {
+                return weekToMicrosecond(week: userInput)
+            } else if from == K.week && to == K.millisecond {
+                return weekToMillisecond(week: userInput)
+            } else if from == K.week && to == K.second {
+                return weekToSecond(week: userInput)
+            } else if from == K.week && to == K.minute {
+                return weekToMinute(week: userInput)
+            } else if from == K.week && to == K.hour {
+                return weekToHour(week: userInput)
+            } else if from == K.week && to == K.day {
+                return weekToDay(week: userInput)
+            } else if from == K.week && to == K.month {
+                return weekToMonth(week: userInput)
+            } else if from == K.week && to == K.calendarYear {
+                return weekToCalendarYear(week: userInput)
+            } else if from == K.week && to == K.decade {
+                return weekToDecade(week: userInput)
+            } else if from == K.week && to == K.century {
+                return weekToCentury(week: userInput)
+            } else if from == K.month && to == K.nanosecond {
+                return monthToNanosecond(month: userInput)
+            } else if from == K.month && to == K.microsecond {
+                return monthToMicrosecond(month: userInput)
+            } else if from == K.month && to == K.millisecond {
+                return monthToMillisecond(month: userInput)
+            } else if from == K.month && to == K.second {
+                return monthToSecond(month: userInput)
+            } else if from == K.month && to == K.minute {
+                return monthToMinute(month: userInput)
+            } else if from == K.month && to == K.hour {
+                return monthToHour(month: userInput)
+            } else if from == K.month && to == K.day {
+                return monthToDay(month: userInput)
+            } else if from == K.month && to == K.week {
+                return monthToWeek(month: userInput)
+            } else if from == K.month && to == K.calendarYear {
+                return monthToCalendarYear(month: userInput)
+            } else if from == K.month && to == K.decade {
+                return monthToDecade(month: userInput)
+            } else if from == K.month && to == K.century {
+                return monthToCentury(month: userInput)
+            } else if from == K.calendarYear && to == K.nanosecond {
+                return calendarYearToNanosecond(calendarYear: userInput)
+            } else if from == K.calendarYear && to == K.microsecond {
+                return calendarYearToMicrosecond(calendarYear: userInput)
+            } else if from == K.calendarYear && to == K.millisecond {
+                return calendarYearToMillisecond(calendarYear: userInput)
+            } else if from == K.calendarYear && to == K.second {
+                return calendarYearToSecond(calendarYear: userInput)
+            } else if from == K.calendarYear && to == K.minute {
+                return calendarYearToMinute(calendarYear: userInput)
+            } else if from == K.calendarYear && to == K.hour {
+                return calendarYearToHour(calendarYear: userInput)
+            } else if from == K.calendarYear && to == K.day {
+                return calendarYearToDay(calendarYear: userInput)
+            } else if from == K.calendarYear && to == K.week {
+                return calendarYearToWeek(calendarYear: userInput)
+            } else if from == K.calendarYear && to == K.month {
+                return calendarYearToMonth(calendarYear: userInput)
+            } else if from == K.calendarYear && to == K.decade {
+                return calendarYearToDecade(calendarYear: userInput)
+            } else if from == K.calendarYear && to == K.century {
+                return calendarYearToCentury(calendarYear: userInput)
+            } else if from == K.decade && to == K.nanosecond {
+                return decadeToNanosecond(decade: userInput)
+            } else if from == K.decade && to == K.microsecond {
+                return decadeToMicrosecond(decade: userInput)
+            } else if from == K.decade && to == K.millisecond {
+                return decadeToMillisecond(decade: userInput)
+            } else if from == K.decade && to == K.second {
+                return decadeToSecond(decade: userInput)
+            } else if from == K.decade && to == K.minute {
+                return decadeToMinute(decade: userInput)
+            } else if from == K.decade && to == K.hour {
+                return decadeToHour(decade: userInput)
+            } else if from == K.decade && to == K.day {
+                return decadeToDay(decade: userInput)
+            } else if from == K.decade && to == K.week {
+                return decadeToWeek(decade: userInput)
+            } else if from == K.decade && to == K.month {
+                return decadeToMonth(decade: userInput)
+            } else if from == K.decade && to == K.calendarYear {
+                return decadeToCalendarYear(decade: userInput)
+            } else if from == K.decade && to == K.century {
+                return decadeToCentury(decade: userInput)
+            } else if from == K.century && to == K.nanosecond {
+                return centuryToNanosecond(century: userInput)
+            } else if from == K.century && to == K.microsecond {
+                return centuryToMicrosecond(century: userInput)
+            } else if from == K.century && to == K.millisecond {
+                return centuryToMillisecond(century: userInput)
+            } else if from == K.century && to == K.second {
+                return centuryToSecond(century: userInput)
+            } else if from == K.century && to == K.minute {
+                return centuryToMinute(century: userInput)
+            } else if from == K.century && to == K.hour {
+                return centuryToHour(century: userInput)
+            } else if from == K.century && to == K.day {
+                return centuryToDay(century: userInput)
+            } else if from == K.century && to == K.week {
+                return centuryToWeek(century: userInput)
+            } else if from == K.century && to == K.month {
+                return centuryToMonth(century: userInput)
+            } else if from == K.century && to == K.calendarYear {
+                return centuryToCalendarYear(century: userInput)
+            } else if from == K.century && to == K.decade {
+                return centuryToDecade(century: userInput)
+            }
             
         default:
             print("Error occured in Model unit convert function")
@@ -1772,6 +2031,19 @@ struct K {
     static let cubicYard = "Cubic Yard"
     static let cubicFoot = "Cubic Foot"
     static let cubicInch = "Cubic Inch"
+    // Time
+    static let nanosecond = "Nanosecond"
+    static let microsecond = "Microsecond"
+    static let millisecond = "millisecond"
+    static let second = "Second"
+    static let minute = "Minute"
+    static let hour = "Hour"
+    static let day = "Day"
+    static let week = "Week"
+    static let month = "Month"
+    static let calendarYear = "Calendar Year"
+    static let decade = "Decade"
+    static let century = "Century"
 }
 
 // MARK: - All the conversion functions are here!
@@ -4132,6 +4404,403 @@ extension Unit {
     }
     func cubicInchToCubicFoot(cubicInch: String) -> Double {
         return Double(cubicInch)! * (1.0 / 1728)
+    }
+    // MARK: - Time
+    func nanosecondToMicrosecond(nanosecond: String) -> Double {
+        return Double(nanosecond)! * 0.001
+    }
+    func nanosecondToMillisecond(nanosecond: String) -> Double {
+        return Double(nanosecond)! * 1e-6
+    }
+    func nanosecondToSecond(nanosecond: String) -> Double {
+        return Double(nanosecond)! * 1e-9
+    }
+    func nanosecondToMinute(nanosecond: String) -> Double {
+        return Double(nanosecond)! / (6e10)
+    }
+    func nanosecondToHour(nanosecond: String) -> Double {
+        return Double(nanosecond)! / (3.6e12)
+    }
+    func nanosecondToDay(nanosecond: String) -> Double {
+        return Double(nanosecond)! / (8.64e13)
+    }
+    func nanosecondToWeek(nanosecond: String) -> Double {
+        return Double(nanosecond)! / (6.048e14)
+    }
+    func nanosecondToMonth(nanosecond: String) -> Double {
+        return Double(nanosecond)! / (2.628e15)
+    }
+    func nanosecondToCalendarYear(nanosecond: String) -> Double {
+        return Double(nanosecond)! * 3.171e-17
+    }
+    func nanosecondToDecade(nanosecond: String) -> Double {
+        return Double(nanosecond)! * 3.171e-18
+    }
+    func nanosecondToCentury(nanosecond: String) -> Double {
+        return Double(nanosecond)! * 3.171e-19
+    }
+    func microsecondToNanosecond(microsecond: String) -> Double {
+        return Double(microsecond)! * 1000
+    }
+    func microsecondToMillisecond(microsecond: String) -> Double {
+        return Double(microsecond)! * 0.001
+    }
+    func microsecondToSecond(microsecond: String) -> Double {
+        return Double(microsecond)! * 1e-6
+    }
+    func microsecondToMinute(microsecond: String) -> Double {
+        return Double(microsecond)! / (6e7)
+    }
+    func microsecondToHour(microsecond: String) -> Double {
+        return Double(microsecond)! / (3.6e9)
+    }
+    func microsecondToDay(microsecond: String) -> Double {
+        return Double(microsecond)! / (8.64e10)
+    }
+    func microsecondToWeek(microsecond: String) -> Double {
+        return Double(microsecond)! / (6.048e11)
+    }
+    func microsecondToMonth(microsecond: String) -> Double {
+        return Double(microsecond)! / (2.628e12)
+    }
+    func microsecondToCalendarYear(microsecond: String) -> Double {
+        return Double(microsecond)! * 3.171e-14
+    }
+    func microsecondToDecade(microsecond: String) -> Double {
+        return Double(microsecond)! * 3.171e-15
+    }
+    func microsecondToCentury(microsecond: String) -> Double {
+        return Double(microsecond)! * 3.131e-16
+    }
+    func millisecondToNanosecond(millisecond: String) -> Double {
+        return Double(millisecond)! * 1e6
+    }
+    func millisecondToMicrosecond(millisecond: String) -> Double {
+        return Double(millisecond)! * 1000
+    }
+    func millisecondToSecond(millisecond: String) -> Double {
+        return Double(millisecond)! * 0.001
+    }
+    func millisecondToMinute(millisecond: String) -> Double {
+        return Double(millisecond)! / 60000
+    }
+    func millisecondToHour(millisecond: String) -> Double {
+        return Double(millisecond)! / (3.6e6)
+    }
+    func millisecondToDay(millisecond: String) -> Double {
+        return Double(millisecond)! / (8.64e7)
+    }
+    func millisecondToWeek(millisecond: String) -> Double {
+        return Double(millisecond)! / (6.048e8)
+    }
+    func millisecondToMonth(millisecond: String) -> Double {
+        return Double(millisecond)! / (2.628e9)
+    }
+    func millisecondToCalendarYear(millisecond: String) -> Double {
+        return Double(millisecond)! * 3.171e-11
+    }
+    func millisecondToDecade(millisecond: String) -> Double {
+        return Double(millisecond)! * 3.171e-12
+    }
+    func millisecondToCentury(millisecond: String) -> Double {
+        return Double(millisecond)! * 3.171e-13
+    }
+    func secondToNanosecond(second: String) -> Double {
+        return Double(second)! * 1e9
+    }
+    func secondToMicrosecond(second: String) -> Double {
+        return Double(second)! * 1e6
+    }
+    func secondToMillisecond(second: String) -> Double {
+        return Double(second)! * 1000.0
+    }
+    func secondToMinute(second: String) -> Double {
+        return Double(second)! / 60.0
+    }
+    func secondToHour(second: String) -> Double {
+        return Double(second)! / 3600.0
+    }
+    func secondToDay(second: String) -> Double {
+        return Double(second)! / 86400.0
+    }
+    func secondToWeek(second: String) -> Double {
+        return Double(second)! * 604800.0
+    }
+    func secondToMonth(second: String) -> Double {
+        return Double(second)! * (2.628e6)
+    }
+    func secondToCalendarYear(second: String) -> Double {
+        return Double(second)! * (3.171e-8)
+    }
+    func secondToDecade(second: String) -> Double {
+        return Double(second)! * (3.171e-9)
+    }
+    func secondToCentury(second: String) -> Double {
+        return Double(second)! * (3.171e-10)
+    }
+    func minuteToNanosecond(minute: String) -> Double {
+        return Double(minute)! * 6e10
+    }
+    func minuteToMicrosecond(minute: String) -> Double {
+        return Double(minute)! * 6e7
+    }
+    func minuteToMillisecond(minute: String) -> Double {
+        return Double(minute)! * 60000
+    }
+    func minuteToSecond(minute: String) -> Double {
+        return Double(minute)! * 60
+    }
+    func minuteToHour(minute: String) -> Double {
+        return Double(minute)! / 60
+    }
+    func minuteToDay(minute: String) -> Double {
+        return Double(minute)! / 1440
+    }
+    func minuteToWeek(minute: String) -> Double {
+        return Double(minute)! / 10080
+    }
+    func minuteToMonth(minute: String) -> Double {
+        return Double(minute)! / 43800
+    }
+    func minuteToCalendarYear(minute: String) -> Double {
+        return Double(minute)! / 525600
+    }
+    func minuteToDecade(minute: String) -> Double {
+        return Double(minute)! / (5.256e6)
+    }
+    func minuteToCentury(minute: String) -> Double {
+        return Double(minute)! / (5.256e7)
+    }
+    func hourToNanosecond(hour: String) -> Double {
+        return Double(hour)! * 3.6e12
+    }
+    func hourToMicrosecond(hour: String) -> Double {
+        return Double(hour)! * 3.6e9
+    }
+    func hourToMillisecond(hour: String) -> Double {
+        return Double(hour)! * 3.6e6
+    }
+    func hourToSecond(hour: String) -> Double {
+        return Double(hour)! * 3600
+    }
+    func hourToMinute(hour: String) -> Double {
+        return Double(hour)! * 60
+    }
+    func hourToDay(hour: String) -> Double {
+        return Double(hour)! / 24
+    }
+    func hourToWeek(hour: String) -> Double {
+        return Double(hour)! / 168
+    }
+    func hourToMonth(hour: String) -> Double {
+        return Double(hour)! / 730
+    }
+    func hourToCalendarYear(hour: String) -> Double {
+        return Double(hour)! / 8760
+    }
+    func hourToDecade(hour: String) -> Double {
+        return Double(hour)! / 87600
+    }
+    func hourToCentury(hour: String) -> Double {
+        return Double(hour)! / 876000
+    }
+    func dayToNanosecond(day: String) -> Double {
+        return Double(day)! * 8.64e13
+    }
+    func dayToMicrosecond(day: String) -> Double {
+        return Double(day)! * 8.64e10
+    }
+    func dayToMillisecond(day: String) -> Double {
+        return Double(day)! * 8.64e7
+    }
+    func dayToSecond(day: String) -> Double {
+        return Double(day)! * 86400
+    }
+    func dayToMinute(day: String) -> Double {
+        return Double(day)! * 1440
+    }
+    func dayToHour(day: String) -> Double {
+        return Double(day)! * 24
+    }
+    func dayToWeek(day: String) -> Double {
+        return Double(day)! / 7.0
+    }
+    func dayToMonth(day: String) -> Double {
+        return Double(day)! * 0.0328767
+    }
+    func dayToCalendarYear(day: String) -> Double {
+        return Double(day)! / 365
+    }
+    func dayToDecade(day: String) -> Double {
+        return Double(day)! / 3650.0
+    }
+    func dayToCentury(day: String) -> Double {
+        return Double(day)! / 36500
+    }
+    func weekToNanosecond(week: String) -> Double {
+        return Double(week)! * 6.048e14
+    }
+    func weekToMicrosecond(week: String) -> Double {
+        return Double(week)! * 6.048e11
+    }
+    func weekToMillisecond(week: String) -> Double {
+        return Double(week)! * 6.048e8
+    }
+    func weekToSecond(week: String) -> Double {
+        return Double(week)! * 604800
+    }
+    func weekToMinute(week: String) -> Double {
+        return Double(week)! * 10080
+    }
+    func weekToHour(week: String) -> Double {
+        return Double(week)! * 168
+    }
+    func weekToDay(week: String) -> Double {
+        return Double(week)! * 7
+    }
+    func weekToMonth(week: String) -> Double {
+        return Double(week)! * 0.230137
+    }
+    func weekToCalendarYear(week: String) -> Double {
+        return Double(week)! * 0.0191781
+    }
+    func weekToDecade(week: String) -> Double {
+        return Double(week)! * 0.00191781
+    }
+    func weekToCentury(week: String) -> Double {
+        return Double(week)! * 0.000191781
+    }
+    func monthToNanosecond(month: String) -> Double {
+        return Double(month)! * 2.628e15
+    }
+    func monthToMicrosecond(month: String) -> Double {
+        return Double(month)! * 2.628e12
+    }
+    func monthToMillisecond(month: String) -> Double {
+        return Double(month)! * 2.628e9
+    }
+    func monthToSecond(month: String) -> Double {
+        return Double(month)! * 2.628e6
+    }
+    func monthToMinute(month: String) -> Double {
+        return Double(month)! * 43800
+    }
+    func monthToHour(month: String) -> Double {
+        return Double(month)! * 730
+    }
+    func monthToDay(month: String) -> Double {
+        return Double(month)! * 30.4167
+    }
+    func monthToWeek(month: String) -> Double {
+        return Double(month)! * 4.34524
+    }
+    func monthToCalendarYear(month: String) -> Double {
+        return Double(month)! / 12
+    }
+    func monthToDecade(month: String) -> Double {
+        return Double(month)! / 120
+    }
+    func monthToCentury(month: String) -> Double {
+        return Double(month)! / 1200
+    }
+    func calendarYearToNanosecond(calendarYear: String) -> Double {
+        return Double(calendarYear)! * 3.154e16
+    }
+    func calendarYearToMicrosecond(calendarYear: String) -> Double {
+        return Double(calendarYear)! * 3.154e13
+    }
+    func calendarYearToMillisecond(calendarYear: String) -> Double {
+        return Double(calendarYear)! * 3.154e10
+    }
+    func calendarYearToSecond(calendarYear: String) -> Double {
+        return Double(calendarYear)! * 3.154e7
+    }
+    func calendarYearToMinute(calendarYear: String) -> Double {
+        return Double(calendarYear)! * 525600
+    }
+    func calendarYearToHour(calendarYear: String) -> Double {
+        return Double(calendarYear)! * 8760
+    }
+    func calendarYearToDay(calendarYear: String) -> Double {
+        return Double(calendarYear)! * 365
+    }
+    func calendarYearToWeek(calendarYear: String) -> Double {
+        return Double(calendarYear)! * 52.1429
+    }
+    func calendarYearToMonth(calendarYear: String) -> Double {
+        return Double(calendarYear)! * 12
+    }
+    func calendarYearToDecade(calendarYear: String) -> Double {
+        return Double(calendarYear)! * 0.1
+    }
+    func calendarYearToCentury(calendarYear: String) -> Double {
+        return Double(calendarYear)! * 0.01
+    }
+    func decadeToNanosecond(decade: String) -> Double {
+        return Double(decade)! * 3.154e17
+    }
+    func decadeToMicrosecond(decade: String) -> Double {
+        return Double(decade)! * 3.154e14
+    }
+    func decadeToMillisecond(decade: String) -> Double {
+        return Double(decade)! * 3.154e11
+    }
+    func decadeToSecond(decade: String) -> Double {
+        return Double(decade)! * 3.154e8
+    }
+    func decadeToMinute(decade: String) -> Double {
+        return Double(decade)! * 5.256e6
+    }
+    func decadeToHour(decade: String) -> Double {
+        return Double(decade)! * 87600
+    }
+    func decadeToDay(decade: String) -> Double {
+        return Double(decade)! * 3650
+    }
+    func decadeToWeek(decade: String) -> Double {
+        return Double(decade)! * 521.429
+    }
+    func decadeToMonth(decade: String) -> Double {
+        return Double(decade)! * 120
+    }
+    func decadeToCalendarYear(decade: String) -> Double {
+        return Double(decade)! * 10
+    }
+    func decadeToCentury(decade: String) -> Double {
+        return Double(decade)! * 0.1
+    }
+    func centuryToNanosecond(century: String) -> Double {
+        return Double(century)! * 3.154e18
+    }
+    func centuryToMicrosecond(century: String) -> Double {
+        return Double(century)! * 3.154e15
+    }
+    func centuryToMillisecond(century: String) -> Double {
+        return Double(century)! * 3.154e12
+    }
+    func centuryToSecond(century: String) -> Double {
+        return Double(century)! * 3.154e9
+    }
+    func centuryToMinute(century: String) -> Double {
+        return Double(century)! * 5.256e7
+    }
+    func centuryToHour(century: String) -> Double {
+        return Double(century)! * 876000
+    }
+    func centuryToDay(century: String) -> Double {
+        return Double(century)! * 365000
+    }
+    func centuryToWeek(century: String) -> Double {
+        return Double(century)! * 5214.29
+    }
+    func centuryToMonth(century: String) -> Double {
+        return Double(century)! * 1200
+    }
+    func centuryToCalendarYear(century: String) -> Double {
+        return Double(century)! * 100
+    }
+    func centuryToDecade(century: String) -> Double {
+        return Double(century)! * 10
     }
 }
 
