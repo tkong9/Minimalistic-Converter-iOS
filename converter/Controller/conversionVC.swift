@@ -25,6 +25,7 @@ class conversionVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         navigationController?.navigationBar.isHidden = false
         conversionPicker.delegate = self
         conversionPicker.dataSource = self
+        userInput.delegate = self
         from = unit.unitPicker[0][0]
         to = unit.unitPicker[0][0]
     }
@@ -85,5 +86,15 @@ class conversionVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             print(result)
             output.text = String(result)
         }
+    }
+}
+
+extension conversionVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JSf-US-beW">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,11 +12,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainVC" customModule="converter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Idh-15-8ry">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WZS-0J-xiO">
                                     <size key="itemSize" width="119" height="164"/>
@@ -55,31 +55,39 @@
             <objects>
                 <viewController id="QKp-7o-bGh" customClass="conversionVC" customModule="converter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wAp-V4-6hw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L9i-dD-CZm">
-                                <rect key="frame" x="0.0" y="150" width="414" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9i-dD-CZm">
+                                <rect key="frame" x="0.0" y="44" width="430" height="216"/>
                             </pickerView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-qH-OAA">
-                                <rect key="frame" x="20" y="398" width="374" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-qH-OAA">
+                                <rect key="frame" x="20" y="290" width="335" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
                                     <action selector="textChanged:" destination="QKp-7o-bGh" eventType="editingChanged" id="SJy-Et-EKZ"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMi-TP-jeF">
-                                <rect key="frame" x="20" y="494" width="374" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMi-TP-jeF">
+                                <rect key="frame" x="20" y="354" width="335" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="jHx-qH-OAA" firstAttribute="leading" secondItem="mZT-Wg-4Bv" secondAttribute="leading" constant="20" id="1b9-LM-FYd"/>
+                            <constraint firstItem="IMi-TP-jeF" firstAttribute="top" secondItem="jHx-qH-OAA" secondAttribute="bottom" constant="30" id="3ax-f6-mBs"/>
+                            <constraint firstItem="mZT-Wg-4Bv" firstAttribute="trailing" secondItem="jHx-qH-OAA" secondAttribute="trailing" constant="20" id="7Cn-Cf-6NL"/>
+                            <constraint firstItem="L9i-dD-CZm" firstAttribute="top" secondItem="mZT-Wg-4Bv" secondAttribute="top" id="9kS-zS-brC"/>
+                            <constraint firstItem="L9i-dD-CZm" firstAttribute="leading" secondItem="mZT-Wg-4Bv" secondAttribute="leading" id="Ngp-hz-xGT"/>
+                            <constraint firstItem="L9i-dD-CZm" firstAttribute="trailing" secondItem="mZT-Wg-4Bv" secondAttribute="trailing" id="f7o-ZM-zNG"/>
+                            <constraint firstItem="IMi-TP-jeF" firstAttribute="leading" secondItem="mZT-Wg-4Bv" secondAttribute="leading" constant="20" id="rLI-EQ-X7K"/>
+                            <constraint firstItem="jHx-qH-OAA" firstAttribute="top" secondItem="L9i-dD-CZm" secondAttribute="bottom" constant="30" id="vZq-Pk-Y0l"/>
+                            <constraint firstItem="mZT-Wg-4Bv" firstAttribute="trailing" secondItem="IMi-TP-jeF" secondAttribute="trailing" constant="20" id="zEp-wr-Re0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mZT-Wg-4Bv"/>
                     </view>
                     <navigationItem key="navigationItem" id="rSF-NS-pdY"/>
@@ -99,7 +107,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JSf-US-beW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="m35-yr-gLy">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
