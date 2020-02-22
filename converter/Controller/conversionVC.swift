@@ -28,7 +28,9 @@ class conversionVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         from = unit.unitPicker[0][0]
         to = unit.unitPicker[0][0]
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return unit.unitPicker[0].count // This should always be 2.
     }

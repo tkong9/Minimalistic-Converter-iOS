@@ -171,7 +171,12 @@ struct Unit {
                     [K.gigahertz, K.gigahertz]
             ]
         case "Data Storage":
-            return [[]
+            return [[K.bit, K.bit],
+                    [K.byte, K.byte],
+                    [K.kilobyte, K.kilobyte],
+                    [K.megabyte, K.megabyte],
+                    [K.gigabyte, K.gigabyte],
+                    [K.terabyte, K.terabyte]
             ]
         default:
             return [["Unit picker"]]
@@ -2464,6 +2469,68 @@ struct Unit {
             } else if from == K.gigahertz && to == K.megahertz {
                 return gigahertzToMegahertz(gigahertz: userInput)
             }
+        case "Data Storage":
+            if from == K.bit && to == K.byte {
+                return bitToByte(bit: userInput)
+            } else if from == K.bit && to == K.kilobyte {
+                return bitToKilobyte(bit: userInput)
+            } else if from == K.bit && to == K.megabyte {
+                return bitToMegabyte(bit: userInput)
+            } else if from == K.bit && to == K.gigabyte {
+                return bitToGigabyte(bit: userInput)
+            } else if from == K.bit && to == K.terabyte {
+                return bitToTerabyte(bit: userInput)
+            } else if from == K.byte && to == K.bit {
+                return byteToBit(byte: userInput)
+            } else if from == K.byte && to == K.kilobyte {
+                return byteToKilobyte(byte: userInput)
+            } else if from == K.byte && to == K.megabyte {
+                return byteToMegabyte(byte: userInput)
+            } else if from == K.byte && to == K.gigabyte {
+                return byteToGigabyte(byte: userInput)
+            } else if from == K.byte && to == K.terabyte {
+                return byteToTerabyte(byte: userInput)
+            } else if from == K.kilobyte && to == K.bit {
+                return kilobyteToBit(kilobyte: userInput)
+            } else if from == K.kilobyte && to == K.byte {
+                return kilobyteToByte(kilobyte: userInput)
+            } else if from == K.kilobyte && to == K.megabyte {
+                return kilobyteToMegabyte(kilobyte: userInput)
+            } else if from == K.kilobyte && to == K.gigabyte {
+                return kilobyteToGigabyte(kilobyte: userInput)
+            } else if from == K.kilobyte && to == K.terabyte {
+                return kilobyteToTerabyte(kilobyte: userInput)
+            } else if from == K.megabyte && to == K.bit {
+                return megabyteToBit(megabyte: userInput)
+            } else if from == K.megabyte && to == K.byte {
+                return megabyteToByte(megabyte: userInput)
+            } else if from == K.megabyte && to == K.kilobyte {
+                return megabyteToKilobyte(megabyte: userInput)
+            } else if from == K.megabyte && to == K.gigabyte {
+                return megabyteToGigabyte(megabyte: userInput)
+            } else if from == K.megabyte && to == K.terabyte {
+                return megabyteToTerabyte(megabyte: userInput)
+            } else if from == K.gigabyte && to == K.bit {
+                return gigabyteToBit(gigabyte: userInput)
+            } else if from == K.gigabyte && to == K.byte {
+                return gigabyteToByte(gigabyte: userInput)
+            } else if from == K.gigabyte && to == K.kilobyte {
+                return gigabyteToKilobyte(gigabyte: userInput)
+            } else if from == K.gigabyte && to == K.megabyte {
+                return gigabyteToMegabyte(gigabyte: userInput)
+            } else if from == K.gigabyte && to == K.terabyte {
+                return gigabyteToTerabyte(gigabyte: userInput)
+            } else if from == K.terabyte && to == K.bit {
+                return terabyteToBit(terabyte: userInput)
+            } else if from == K.terabyte && to == K.byte {
+                return terabyteToByte(terabyte: userInput)
+            } else if from == K.terabyte && to == K.kilobyte {
+                return terabyteToKilobyte(terabyte: userInput)
+            } else if from == K.terabyte && to == K.megabyte {
+                return terabyteToMegabyte(terabyte: userInput)
+            } else if from == K.terabyte && to == K.gigabyte {
+                return terabyteToGigabyte(terabyte: userInput)
+            }
             
         default:
             print("Error occured in Model unit convert function")
@@ -2539,7 +2606,7 @@ struct K {
     // Time
     static let nanosecond = "Nanosecond"
     static let microsecond = "Microsecond"
-    static let millisecond = "millisecond"
+    static let millisecond = "Millisecond"
     static let second = "Second"
     static let minute = "Minute"
     static let hour = "Hour"
@@ -2559,8 +2626,8 @@ struct K {
     static let atmosphere = "Atmosphere"
     static let bar = "Bar"
     static let pascal = "Pascal"
-    static let poundForcePerSquareInch = "psi"
-    static let torr = "torr"
+    static let poundForcePerSquareInch = "Psi"
+    static let torr = "Torr"
     // Mass
     static let metricTon = "Metric Ton"
     static let kilogram = "Kilogram"
@@ -6048,6 +6115,96 @@ extension Unit {
     }
     func gigahertzToMegahertz(gigahertz: String) -> Double {
         return Double(gigahertz)! * 1000
+    }
+    func bitToByte(bit: String) -> Double {
+        return Double(bit)! / 8.0
+    }
+    func bitToKilobyte(bit: String) -> Double {
+        return Double(bit)! / 8000
+    }
+    func bitToMegabyte(bit: String) -> Double {
+        return Double(bit)! / (8e6)
+    }
+    func bitToGigabyte(bit: String) -> Double {
+        return Double(bit)! / (8e9)
+    }
+    func bitToTerabyte(bit: String) -> Double {
+        return Double(bit)! / (8e12)
+    }
+    func byteToBit(byte: String) -> Double {
+        return Double(byte)! * 8
+    }
+    func byteToKilobyte(byte: String) -> Double {
+        return Double(byte)! * 0.001
+    }
+    func byteToMegabyte(byte: String) -> Double {
+        return Double(byte)! * 1e-6
+    }
+    func byteToGigabyte(byte: String) -> Double {
+        return Double(byte)! * 1e-9
+    }
+    func byteToTerabyte(byte: String) -> Double {
+        return Double(byte)! * 1e-12
+    }
+    func kilobyteToBit(kilobyte: String) -> Double {
+        return Double(kilobyte)! * 8000
+    }
+    func kilobyteToByte(kilobyte: String) -> Double {
+        return Double(kilobyte)! * 1000
+    }
+    func kilobyteToMegabyte(kilobyte: String) -> Double {
+        return Double(kilobyte)! * 0.001
+    }
+    func kilobyteToGigabyte(kilobyte: String) -> Double {
+        return Double(kilobyte)! * 1e-6
+    }
+    func kilobyteToTerabyte(kilobyte: String) -> Double {
+        return Double(kilobyte)! * 1e-9
+    }
+    func megabyteToBit(megabyte: String) -> Double {
+        return Double(megabyte)! * 8e6
+    }
+    func megabyteToByte(megabyte: String) -> Double {
+        return Double(megabyte)! * 1e6
+    }
+    func megabyteToKilobyte(megabyte: String) -> Double {
+        return Double(megabyte)! * 1000
+    }
+    func megabyteToGigabyte(megabyte: String) -> Double {
+        return Double(megabyte)! * 0.001
+    }
+    func megabyteToTerabyte(megabyte: String) -> Double {
+        return Double(megabyte)! * 1e-6
+    }
+    func gigabyteToBit(gigabyte: String) -> Double {
+        return Double(gigabyte)! * 8e9
+    }
+    func gigabyteToByte(gigabyte: String) -> Double {
+        return Double(gigabyte)! * 1e9
+    }
+    func gigabyteToKilobyte(gigabyte: String) -> Double {
+        return Double(gigabyte)! * 1e6
+    }
+    func gigabyteToMegabyte(gigabyte: String) -> Double {
+        return Double(gigabyte)! * 1000
+    }
+    func gigabyteToTerabyte(gigabyte: String) -> Double {
+        return Double(gigabyte)! * 0.001
+    }
+    func terabyteToBit(terabyte: String) -> Double {
+        return Double(terabyte)! * 8e12
+    }
+    func terabyteToByte(terabyte: String) -> Double {
+        return Double(terabyte)! * 1e12
+    }
+    func terabyteToKilobyte(terabyte: String) -> Double {
+        return Double(terabyte)! * 1e9
+    }
+    func terabyteToMegabyte(terabyte: String) -> Double {
+        return Double(terabyte)! * 1e6
+    }
+    func terabyteToGigabyte(terabyte: String) -> Double {
+        return Double(terabyte)! * 1000
     }
 }
 
