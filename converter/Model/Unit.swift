@@ -19,10 +19,10 @@ struct Unit {
             return "lessthan"
         case "Area":
             return "circle.lefthalf.fill"
-        case "Bits":
-            return "0.square"
-        case "Density":
-            return "lock"
+        case "Data Storage":
+            return "tray.2"
+        case "Frequency":
+            return "waveform.path.ecg"
         case "Energy":
             return "bolt.horizontal"
         case "Length":
@@ -163,6 +163,15 @@ struct Unit {
                     [K.britishThermal, K.britishThermal],
                     [K.usTherm, K.usTherm],
                     [K.footPound, K.footPound]
+            ]
+        case "Frequency":
+            return [[K.hertz, K.hertz],
+                    [K.kilohertz, K.kilohertz],
+                    [K.megahertz, K.megahertz],
+                    [K.gigahertz, K.gigahertz]
+            ]
+        case "Data Storage":
+            return [[]
             ]
         default:
             return [["Unit picker"]]
@@ -2428,6 +2437,33 @@ struct Unit {
             } else if from == K.usTherm && to == K.footPound {
                 return usThermToFootPound(usTherm: userInput)
             }
+            // MARK: - Frequency
+        case "Frequency":
+            if from == K.hertz && to == K.kilohertz {
+                return hertzToKilohertz(hertz: userInput)
+            } else if from == K.hertz && to == K.megahertz {
+                return hertzToMegahertz(hertz: userInput)
+            } else if from == K.hertz && to == K.gigahertz {
+                return hertzToGigahertz(hertz: userInput)
+            } else if from == K.kilohertz && to == K.hertz {
+                return kilohertzToHertz(kiloHertz: userInput)
+            } else if from == K.kilohertz && to == K.megahertz {
+                return kilohertzToMegahertz(kiloHertz: userInput)
+            } else if from == K.kilohertz && to == K.gigahertz {
+                return kilohertzToGigahertz(kiloHertz: userInput)
+            } else if from == K.megahertz && to == K.hertz {
+                return megahertzToHertz(megaHertz: userInput)
+            } else if from == K.megahertz && to == K.kilohertz {
+                return megahertzToKilohertz(megaHertz: userInput)
+            } else if from == K.megahertz && to == K.gigahertz {
+                return megahertzToGigahertz(megaHertz: userInput)
+            } else if from == K.gigahertz && to == K.hertz {
+                return gigahertzToHertz(gigahertz: userInput)
+            }  else if from == K.gigahertz && to == K.kilohertz {
+                return gigahertzToKilohertz(gigahertz: userInput)
+            } else if from == K.gigahertz && to == K.megahertz {
+                return gigahertzToMegahertz(gigahertz: userInput)
+            }
             
         default:
             print("Error occured in Model unit convert function")
@@ -2547,6 +2583,18 @@ struct K {
     static let britishThermal = "British thermal"
     static let usTherm = "US thermal"
     static let footPound = "Foot-pound"
+    // Frequency
+    static let hertz = "Hertz"
+    static let kilohertz = "Kilohertz"
+    static let megahertz = "Megahertz"
+    static let gigahertz = "Gigahertz"
+    // Data Storage
+    static let bit = "Bit"
+    static let byte = "Byte"
+    static let kilobyte = "Kilobyte"
+    static let megabyte = "Megabyte"
+    static let gigabyte = "Gigabyte"
+    static let terabyte = "Terabyte"
 }
 
 // MARK: - All the conversion functions are here!
@@ -5964,6 +6012,42 @@ extension Unit {
     }
     func footPoundToUSTherm(footPound: String) -> Double {
         return Double(footPound)! * 1.2854e-8
+    }
+    func hertzToKilohertz(hertz: String) -> Double {
+        return Double(hertz)! * 0.001
+    }
+    func hertzToMegahertz(hertz: String) -> Double {
+        return Double(hertz)! * 1e-6
+    }
+    func hertzToGigahertz(hertz: String) -> Double {
+        return Double(hertz)! * 1e-9
+    }
+    func kilohertzToHertz(kiloHertz: String) -> Double {
+        return Double(kiloHertz)! * 1000
+    }
+    func kilohertzToMegahertz(kiloHertz: String) -> Double {
+        return Double(kiloHertz)! * 0.001
+    }
+    func kilohertzToGigahertz(kiloHertz: String) -> Double {
+        return Double(kiloHertz)! * 1e-6
+    }
+    func megahertzToHertz(megaHertz: String) -> Double {
+        return Double(megaHertz)! * 1e6
+    }
+    func megahertzToKilohertz(megaHertz: String) -> Double {
+        return Double(megaHertz)! * 1000
+    }
+    func megahertzToGigahertz(megaHertz: String) -> Double {
+        return Double(megaHertz)! * 0.001
+    }
+    func gigahertzToHertz(gigahertz: String) -> Double {
+        return Double(gigahertz)! * 1e9
+    }
+    func gigahertzToKilohertz(gigahertz: String) -> Double {
+        return Double(gigahertz)! * 1e6
+    }
+    func gigahertzToMegahertz(gigahertz: String) -> Double {
+        return Double(gigahertz)! * 1000
     }
 }
 

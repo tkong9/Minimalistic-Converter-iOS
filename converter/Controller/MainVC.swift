@@ -15,9 +15,9 @@ class MainVC: UIViewController {
     var units: [Unit] = [
         Unit(unitName: "Angle"),
         Unit(unitName: "Area"),
-        Unit(unitName: "Bits"),
-        Unit(unitName: "Density"),
+        Unit(unitName: "Data Storage"),
         Unit(unitName: "Energy"),
+        Unit(unitName: "Frequency"),
         Unit(unitName: "Length"),
         Unit(unitName: "Mass"),
         Unit(unitName: "Pressure"),
